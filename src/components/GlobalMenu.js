@@ -1,17 +1,30 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Dropdown, Icon, Menu } from 'semantic-ui-react'
+import {
+  Dropdown,
+  Icon,
+  Menu,
+  Button,
+  Input,
+  Segment,
+  Modal
+} from 'semantic-ui-react'
 import { LoginModal } from './LoginModal'
 import Gravatar from 'react-gravatar'
 import styled from 'styled-components'
 
 const SignedInMenu = ({ me, onSignOut }) =>
   <Menu.Menu position="right">
-    <Dropdown item trigger={<span><Icon name="plus" /></span>}>
+    <Dropdown
+      item
+      trigger={
+        <span>
+          <Icon name="plus" />
+        </span>
+      }
+    >
       <Dropdown.Menu>
-        <Dropdown.Header>
-          Create new...
-        </Dropdown.Header>
+        <Dropdown.Header>Create new...</Dropdown.Header>
         <Dropdown.Item as={Link} to="/new" content="Repository" />
         <Dropdown.Item
           as={Link}
@@ -63,7 +76,51 @@ const GlobalMenu = ({
 }) =>
   <div className={className}>
     <InnerMenu inverted borderless fixed="top">
-      <Menu.Item header as={Link} to="/">Ontohub</Menu.Item>
+      <Menu size="massive" inverted>
+        <Menu.Item header as={Link} to="/">
+          Ontohub
+        </Menu.Item>
+      </Menu>
+
+      <Menu.Item>
+        <Input type="text" placeholder="Search..." action>
+          <input />
+          <Button.Group>
+            <Button content="Search" />
+            <Button.Or />
+            <Modal
+              trigger={
+                <Button
+                  color="grey"
+                  content="Filter"
+                  icon="filter"
+                  labelPosition="right"
+                />
+              }
+              closeIcon="close"
+            >
+              <Modal.Header>Filter Search</Modal.Header>
+              <Modal.Content>
+                <div>
+                  <Input placeholder="Search..." fluid />
+                  <p />
+                  <p />
+                </div>
+
+                <div>
+                  <Button
+                    icon="search"
+                    color="blue"
+                    content="Search..."
+                    fluid
+                  />
+                </div>
+              </Modal.Content>
+            </Modal>
+          </Button.Group>
+        </Input>
+      </Menu.Item>
+
       {(me && <SignedInMenu me={me} onSignOut={onSignOut} />) ||
         <SignedOutMenu
           onSignIn={onSignIn}
