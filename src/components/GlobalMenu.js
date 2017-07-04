@@ -6,7 +6,7 @@ import {
   Menu,
   Button,
   Input,
-  Segment,
+  Message,
   Modal
 } from 'semantic-ui-react'
 import { LoginModal } from './LoginModal'
@@ -86,11 +86,12 @@ const GlobalMenu = ({
         <Input type="text" placeholder="Search..." action>
           <input />
           <Button.Group>
-            <Button content="Search" />
+            <Button primary content="Search" />
             <Button.Or />
             <Modal
               trigger={
                 <Button
+                  inverted
                   color="grey"
                   content="Filter"
                   icon="filter"
@@ -104,6 +105,12 @@ const GlobalMenu = ({
                 <div>
                   <Input placeholder="Search..." fluid />
                   <p />
+                  <p />
+                  <Message
+                    negative
+                    header="Preview Filter Function"
+                    content="More additional Filters will be added soon!"
+                  />
                   <p />
                 </div>
 
