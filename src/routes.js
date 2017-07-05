@@ -1,4 +1,5 @@
 import { Home, HomeHeader } from './scenes'
+import { testmain } from './scenes'
 
 export default [
   {
@@ -6,5 +7,15 @@ export default [
     exact: true,
     header: HomeHeader,
     main: Home
+  },
+  {
+    path: '/home',
+    exact: true
+  },
+
+  {
+    path: '/:test',
+    exact: true,
+    main: testmain
   }
 ]

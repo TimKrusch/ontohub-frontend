@@ -76,11 +76,14 @@ const GlobalMenu = ({
 }) =>
   <div className={className}>
     <InnerMenu inverted borderless fixed="top">
-      <Menu size="massive" inverted>
+      <Menu size="large" inverted>
         <Menu.Item header as={Link} to="/">
           Ontohub
         </Menu.Item>
       </Menu>
+
+      <Menu.Item disabled />
+      <Menu.Item disabled />
 
       <Menu.Item>
         <Input type="text" placeholder="Search..." action>
