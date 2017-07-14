@@ -12,6 +12,7 @@ import {
   toggleVisibility,
   List
 } from 'semantic-ui-react'
+import {Content} from '.'
 
 const branches = [
   { key: 'master', text: 'master', value: 'master' },
@@ -140,7 +141,7 @@ class testmain extends Component {
           </Sidebar>
           <Sidebar.Pusher>
             <Segment>
-              <Header as="h3">Application Content</Header>
+              <Content />
               <br />
               <br />
               <br />
