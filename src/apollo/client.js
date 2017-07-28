@@ -1,26 +1,58 @@
-import { ApolloClient, createNetworkInterface } from 'react-apollo'
-import config from '../config'
+import { ApolloClient, createBatchingNetworkInterface } from 'react-apollo'
+import _ from 'lodash'
+import { signOut } from '../helpers/session'
 
-const networkInterface = createNetworkInterface({
-  uri: `${config.api.endpoint}/graphql`
+const backendHost = process.env.REACT_APP_BACKEND_HOST
+
+const networkInterface = createBatchingNetworkInterface({
+  uri: `${backendHost}/graphql`,
+  batchInterval: 10
 })
+
+export const Client = new ApolloClient({
+  networkInterface,
+  queryDeduplication: true
+})
+
 networkInterface.use([
   {
-    applyMiddleware(req, next) {
+    applyBatchMiddleware(req, next) {
       if (!req.options.headers) {
-        req.options.headers = {} // Create the header object if needed.
+        req.options.headers = {}
       }
+      next()
+    }
+  },
+  {
+    applyBatchMiddleware(req, next) {
+      Object.assign(req.options.headers, {
+        Accept: 'application/json'
+      })
+      next()
+    }
+  },
+  {
+    applyBatchMiddleware(req, next) {
       let authToken = localStorage.getItem('auth-token')
       if (authToken) {
-        req.options.headers['Authorization'] = `Bearer ${authToken}`
+        Object.assign(req.options.headers, {
+          Authorization: `Bearer ${authToken}`
+        })
       }
       next()
     }
   }
 ])
 
-export const Client = new ApolloClient({
-  networkInterface
-})
+networkInterface.useAfter([
+  {
+    applyBatchAfterware({ responses, options }, next) {
+      if (_.some(responses, (response) => response.status === 401)) {
+        signOut(Client)
+      }
+      next()
+    }
+  }
+])
 
 export default Client

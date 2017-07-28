@@ -52,10 +52,20 @@ const SignedInMenu = ({ me, onSignOut }) =>
     </Dropdown>
   </Menu.Menu>
 
-const SignedOutMenu = ({ onSignIn, signUpValidations }) =>
+const SignedOutMenu = ({
+  onSignIn,
+  onSignUp,
+  signUpValidations,
+  enableCaptcha
+}) =>
   <Menu.Menu position="right">
     <Menu.Item>
-      <LoginModal onSignIn={onSignIn} signUpValidations={signUpValidations} />
+      <LoginModal
+        enableCaptcha={enableCaptcha}
+        onSignIn={onSignIn}
+        onSignUp={onSignUp}
+        signUpValidations={signUpValidations}
+      />
     </Menu.Item>
   </Menu.Menu>
 
@@ -69,13 +79,16 @@ const GlobalMenu = ({
   loading,
   error,
   me,
+  enableCaptcha,
   onSignIn,
   onSignOut,
+  onSignUp,
   signUpValidations,
   className
 }) =>
   <div className={className}>
     <InnerMenu inverted borderless fixed="top">
+<<<<<<< HEAD
       <Menu size="large" inverted>
         <Menu.Item header as={Link} to="/">
           Ontohub
@@ -131,9 +144,16 @@ const GlobalMenu = ({
         </Input>
       </Menu.Item>
 
+=======
+      <Menu.Item header as={Link} to="/">
+        Ontohub
+      </Menu.Item>
+>>>>>>> master
       {(me && <SignedInMenu me={me} onSignOut={onSignOut} />) ||
         <SignedOutMenu
+          enableCaptcha={enableCaptcha}
           onSignIn={onSignIn}
+          onSignUp={onSignUp}
           signUpValidations={signUpValidations}
         />}
     </InnerMenu>
