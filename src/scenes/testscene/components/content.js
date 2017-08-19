@@ -16,32 +16,46 @@ import {
   handleItemClick
 } from 'semantic-ui-react'
 
-
 export default class Content extends React.Component {
-    state = { activeItem: 'details' };
+  state = { activeItem: 'details' }
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-    render() {
+  render() {
     const { activeItem } = this.state
 
-    return(
+    return (
       <div>
-        <Menu attached='top' size="mini">
-          <Menu.Item name="details" active={activeItem === 'details'} >
-            <Button name="details" onClick={this.handleItemClick} active={activeItem === 'details'}>Details </Button>
-            <Button name='1' icon="plus" >
+        <Menu attached="top" size="mini">
+          <Menu.Item name="details" active={activeItem === 'details'}>
+            <Button
+              name="details"
+              onClick={this.handleItemClick}
+              active={activeItem === 'details'}
+            >
+              Details{' '}
             </Button>
+            <Button name="1" icon="plus" />
           </Menu.Item>
-          <Menu.Item name="editor" active={activeItem === 'editor'} >
-            <Button name="editor" onClick={this.handleItemClick} active={activeItem === 'editor'}>Editor </Button>
-            <Button name='2' icon="plus">
+          <Menu.Item name="editor" active={activeItem === 'editor'}>
+            <Button
+              name="editor"
+              onClick={this.handleItemClick}
+              active={activeItem === 'editor'}
+            >
+              Editor{' '}
             </Button>
+            <Button name="2" icon="plus" />
           </Menu.Item>
-          <Menu.Item name="history" active={activeItem === 'history'} >
-            <Button name="history" onClick={this.handleItemClick} active={activeItem === 'history'}>History </Button>
-            <Button name='3' icon="plus">
+          <Menu.Item name="history" active={activeItem === 'history'}>
+            <Button
+              name="history"
+              onClick={this.handleItemClick}
+              active={activeItem === 'history'}
+            >
+              History{' '}
             </Button>
+            <Button name="3" icon="plus" />
           </Menu.Item>
         </Menu>
         <Segment>
@@ -68,11 +82,6 @@ export default class Content extends React.Component {
         </Segment>
       </div>
     )
-
   }
-
-
 }
 export { Content }
-
-

@@ -88,7 +88,6 @@ const GlobalMenu = ({
 }) =>
   <div className={className}>
     <InnerMenu inverted borderless fixed="top">
-<<<<<<< HEAD
       <Menu size="large" inverted>
         <Menu.Item header as={Link} to="/">
           Ontohub
@@ -142,13 +141,11 @@ const GlobalMenu = ({
             </Modal>
           </Button.Group>
         </Input>
+        <Menu.Item>
+          <Button icon="sign in" content="Probe sign in" as={Link} to="/user" />
+        </Menu.Item>
       </Menu.Item>
 
-=======
-      <Menu.Item header as={Link} to="/">
-        Ontohub
-      </Menu.Item>
->>>>>>> master
       {(me && <SignedInMenu me={me} onSignOut={onSignOut} />) ||
         <SignedOutMenu
           enableCaptcha={enableCaptcha}

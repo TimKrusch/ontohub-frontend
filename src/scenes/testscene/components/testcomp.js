@@ -10,29 +10,56 @@ import {
   Header,
   state,
   toggleVisibility,
+  toggle1,
+  toggle2,
   List
 } from 'semantic-ui-react'
-import {Content} from '.'
+import { Content } from '.'
+import { Filebrowser } from '.'
+import styled from 'styled-components'
 
 const branches = [
   { key: 'master', text: 'master', value: 'master' },
   { key: 'branch_test1', text: 'branch_test1', value: 'branch_test1' },
   { key: 'branch_test2', text: 'branch_test2', value: 'branch_test2' }
 ]
-class testmain extends Component {
-  state = { visible: true }
 
-  toggleVisibility = () => this.setState({ visible: !this.state.visible })
+class testmain extends Component {
+  constructor(props) {
+    super()
+    this.state = {
+      isFBvisible: 1,
+      visibleFB: { display: 'inline', width: '20%', float: 'left' },
+      visibleC: { display: 'inline', width: '80%', float: 'right' }
+    }
+  }
+
+  toggle1(e) {
+    if (this.state.isFBvisible === 1) {
+      this.setState({
+        isFBvisible: 0,
+        visibleFB: { display: 'none', width: '20%', float: 'left' },
+        visibleC: { display: 'inline', width: '100%', float: 'right' }
+      })
+    } else {
+      this.setState({
+        isFBvisible: 1,
+        visibleFB: { display: 'inline', width: '20%', float: 'left' },
+        visibleC: { display: 'inline', width: '80%', float: 'right' }
+      })
+    }
+  }
 
   render() {
-    const { visible } = this.state
+    const { visibleFB } = this.state
+    const { visibleC } = this.state
     return (
       <div>
         {' '}<Menu borderless>
           <Button.Group>
             <Button
               basic
-              onClick={this.toggleVisibility}
+              onClick={this.toggle1.bind(this)}
               content="Filebrowser"
               icon="sitemap"
             />
@@ -77,91 +104,30 @@ class testmain extends Component {
             </Button.Group>
           </Menu.Menu>
         </Menu>
-        <Sidebar.Pushable as={Segment}>
-          <Sidebar
-            as={List}
-            animation="slide out"
-            width="wide"
-            visible={visible}
-            icon="labeled"
-            vertical
-          >
-            <List.Item>
-              <List.Icon name="folder" />
-              <List.Content>
-                <List.Header>src</List.Header>
-                <List.Description>Source files for project</List.Description>
-                <List.List>
-                  <List.Item>
-                    <List.Icon name="folder" />
-                    <List.Content>
-                      <List.Header>site</List.Header>
-                      <List.Description>Your site's theme</List.Description>
-                    </List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <List.Icon name="folder" />
-                    <List.Content>
-                      <List.Header>themes</List.Header>
-                      <List.Description>Packaged theme files</List.Description>
-                      <List.List>
-                        <List.Item>
-                          <List.Icon name="folder" />
-                          <List.Content>
-                            <List.Header>default</List.Header>
-                            <List.Description>
-                              Default packaged theme
-                            </List.Description>
-                          </List.Content>
-                        </List.Item>
-                        <List.Item>
-                          <List.Icon name="folder" />
-                          <List.Content>
-                            <List.Header>my_theme</List.Header>
-                            <List.Description>
-                              Packaged themes are also available in this folder
-                            </List.Description>
-                          </List.Content>
-                        </List.Item>
-                      </List.List>
-                    </List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <List.Icon name="file" />
-                    <List.Content>
-                      <List.Header>theme.config</List.Header>
-                      <List.Description>
-                        Config file for setting packaged themes
-                      </List.Description>
-                    </List.Content>
-                  </List.Item>
-                </List.List>
-              </List.Content>
-            </List.Item>
-          </Sidebar>
-          <Sidebar.Pusher>
-            <Segment>
-              <Content />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
+        <div style={visibleFB}>
+          <Filebrowser />
+        </div>
+        <div style={visibleC}>
+          <Segment>
+            <Content />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </Segment>
+        </div>
       </div>
     )
   }
 }
-
 export { testmain }
 
 export default testmain
