@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import { Home, HomeHeader } from './scenes'
 import { testmain } from './scenes'
 import { usermain } from './scenes'

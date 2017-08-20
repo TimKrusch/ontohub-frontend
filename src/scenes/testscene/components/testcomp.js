@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
   Sidebar,
@@ -39,13 +40,13 @@ class testmain extends Component {
       this.setState({
         isFBvisible: 0,
         visibleFB: { display: 'none', width: '20%', float: 'left' },
-        visibleC: { display: 'inline', width: '100%', float: 'right' }
+        visibleC: { display: 'inline', width: '100%', float: 'right', high: '100%' }
       })
     } else {
       this.setState({
         isFBvisible: 1,
         visibleFB: { display: 'inline', width: '20%', float: 'left' },
-        visibleC: { display: 'inline', width: '80%', float: 'right' }
+        visibleC: { display: 'inline', width: '80%', float: 'right', high: '100%' }
       })
     }
   }
@@ -108,21 +109,19 @@ class testmain extends Component {
           <Filebrowser />
         </div>
         <div style={visibleC}>
-          <Segment>
-            <Content />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-          </Segment>
+          <Content />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
         </div>
       </div>
     )

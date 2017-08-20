@@ -14,13 +14,13 @@ export default class usermain extends Component {
         <Menu pointing secondary>
           <Menu.Item
             name="Overview"
+            active={activeItem === 'Overview'}
             onClick={this.handleItemClick}
-            active={activeItem === 'Overciew'}
           />
           <Menu.Item
             name="My Repositories"
+            active={activeItem === 'My Repositories'}
             onClick={this.handleItemClick}
-            active={activeItem === 'myrepo'}
           />
         </Menu>
         <List celled style={{ width: '40%' }}>
