@@ -1,4 +1,3 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
   Sidebar,
@@ -30,30 +29,97 @@ class testmain extends Component {
     super()
     this.state = {
       isFBvisible: 1,
-      visibleFB: { display: 'inline', width: '20%', float: 'left' },
-      visibleC: { display: 'inline', width: '80%', float: 'right' }
+      isCxvisible: 0,
+      visibleFB: { display: 'inline', flex: '2' },
+      visibleC: { display: 'inline', flex: '8' },
+      visibleCx: { display: 'none', flex: '4' }
     }
   }
 
   toggle1(e) {
     if (this.state.isFBvisible === 1) {
-      this.setState({
-        isFBvisible: 0,
-        visibleFB: { display: 'none', width: '20%', float: 'left' },
-        visibleC: { display: 'inline', width: '100%', float: 'right', high: '100%' }
-      })
+      if (this.state.isCxvisible === 1) {
+        this.setState({
+          isFBvisible: 0,
+          isCxvisible: 1,
+          visibleFB: { display: 'none', flex: '1' },
+          visibleC: { display: 'inline', flex: '7' },
+          visibleCx: { display: 'inline', flex: '3' }
+        })
+      } else {
+        this.setState({
+          isFBvisible: 0,
+          isCxvisible: 0,
+          visibleFB: { display: 'none', flex: '1' },
+          visibleC: { display: 'inline', flex: '1' },
+          visibleCx: { display: 'none', flex: '1' }
+        })
+      }
     } else {
-      this.setState({
-        isFBvisible: 1,
-        visibleFB: { display: 'inline', width: '20%', float: 'left' },
-        visibleC: { display: 'inline', width: '80%', float: 'right', high: '100%' }
-      })
+      if (this.state.isCxvisible === 1) {
+        this.setState({
+          isFBvisible: 1,
+          isCxvisible: 1,
+          visibleFB: { display: 'inline', flex: '2' },
+          visibleC: { display: 'inline', flex: '5' },
+          visibleCx: { display: 'inline', flex: '3' }
+        })
+      } else {
+        this.setState({
+          isFBvisible: 1,
+          isCxvisible: 0,
+          visibleFB: { display: 'inline', flex: '2' },
+          visibleC: { display: 'inline', flex: '8' },
+          visibleCx: { display: 'none', flex: '1' }
+        })
+      }
+    }
+  }
+
+  toggle2(e) {
+    if (this.state.isCxvisible === 0) {
+      if (this.state.isFBvisible === 1) {
+        this.setState({
+          isFBvisible: 1,
+          isCxvisible: 1,
+          visibleFB: { display: 'inline', flex: '2' },
+          visibleC: { display: 'inline', flex: '5' },
+          visibleCx: { display: 'inline', flex: '3' }
+        })
+      } else {
+        this.setState({
+          isFBvisible: 0,
+          isCxvisible: 1,
+          visibleFB: { display: 'none', flex: '1' },
+          visibleC: { display: 'inline', flex: '7' },
+          visibleCx: { display: 'inline', flex: '3' }
+        })
+      }
+    } else {
+      if (this.state.isFBvisible === 1) {
+        this.setState({
+          isFBvisible: 1,
+          isCxvisible: 0,
+          visibleFB: { display: 'inline', flex: '2' },
+          visibleC: { display: 'inline', flex: '8' },
+          visibleCx: { display: 'none', flex: '1' }
+        })
+      } else {
+        this.setState({
+          isFBvisible: 0,
+          isCxvisible: 0,
+          visibleFB: { display: 'none', flex: '1' },
+          visibleC: { display: 'inline', flex: '10' },
+          visibleCx: { display: 'none', flex: '1' }
+        })
+      }
     }
   }
 
   render() {
     const { visibleFB } = this.state
     const { visibleC } = this.state
+    const { visibleCx } = this.state
     return (
       <div>
         {' '}<Menu borderless>
@@ -86,6 +152,14 @@ class testmain extends Component {
 
           <Menu.Menu position="right">
             <Button.Group floated="right">
+              <Button basic onClick={this.toggle2.bind(this)}>
+                <Icon.Group>
+                  <Icon name="window restore" />
+                  <Icon corner name="plus" />
+                </Icon.Group>
+                {' add Context'}
+              </Button>
+
               <Button basic>
                 <Icon.Group>
                   <Icon name="file" />
@@ -105,23 +179,14 @@ class testmain extends Component {
             </Button.Group>
           </Menu.Menu>
         </Menu>
-        <div style={visibleFB}>
-          <Filebrowser />
-        </div>
-        <div style={visibleC}>
-          <Content />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+        <div style={{ display: 'flex' }}>
+          <div style={visibleFB}>
+            <Filebrowser />
+          </div>
+          <div style={visibleC}>
+            <Content />
+          </div>
+          <div style={visibleCx}>Context</div>
         </div>
       </div>
     )
