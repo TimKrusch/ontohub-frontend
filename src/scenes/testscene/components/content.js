@@ -1,197 +1,160 @@
 import React, { Component } from 'react'
 import {
-  Sidebar,
-  Icon,
   Segment,
   Menu,
-  Dropdown,
   Button,
-  Breadcrumb,
-  Header,
-  state,
-  toggleVisibility,
-  List,
-  Rail,
-  Tab,
-  toggle,
-  handleItemClick
+  DetailsClick,
+  EditorClick,
+  HistoryClick
 } from 'semantic-ui-react'
 import styled from 'styled-components'
 
-export default class Content extends React.Component {
+class Content extends Component {
   constructor(props) {
     super()
     this.state = {
-      isDvisible: 1,
-      isEvisible: 0,
-      isHvisible: 0,
+      isDvisible: true,
+      isEvisible: false,
+      isHvisible: false,
       visibleD: { display: 'inline', flex: '2' },
       visibleE: { display: 'none', flex: '3' },
       visibleH: { display: 'none', flex: '2' }
     }
   }
 
-  toggle1(e) {
-    if (this.state.isEvisible === 1) {
-      if (this.state.isHvisible === 1) {
-        this.setState({
-          isDvisible: 1,
-          isEvisible: 1,
-          isHvisible: 1,
-          visibleD: { display: 'inline', flex: '2' },
-          visibleE: { display: 'inline', flex: '3' },
-          visibleH: { display: 'inline', flex: '2' }
-        })
-      } else {
-        this.setState({
-          isDvisible: 1,
-          isEvisible: 1,
-          isHvisible: 0,
-          visibleD: { display: 'inline', flex: '2' },
-          visibleE: { display: 'inline', flex: '3' },
-          visibleH: { display: 'none', flex: '2' }
-        })
-      }
+  toggletheVisibility(bDetails, bEditor, bHistory, e) {
+    if (bDetails === true && bEditor === true && bHistory === true) {
+      this.setState({
+        isDvisible: true,
+        isEvisible: true,
+        isHvisible: true,
+        visibleD: { display: 'inline', flex: '2' },
+        visibleE: { display: 'inline', flex: '3' },
+        visibleH: { display: 'inline', flex: '2' }
+      })
     } else {
-      if (this.state.isHvisible === 1) {
+      if (bDetails === true && bEditor === true) {
         this.setState({
-          isDvisible: 1,
-          isEvisible: 0,
-          isHvisible: 1,
-          visibleD: { display: 'inline', flex: '2' },
-          visibleE: { display: 'none', flex: '3' },
-          visibleH: { display: 'inline', flex: '2' }
-        })
-      } else {
-        this.setState({
-          isDvisible: 1,
-          isEvisible: 0,
-          isHvisible: 0,
-          visibleD: { display: 'inline', flex: '2' },
-          visibleE: { display: 'none', flex: '3' },
-          visibleH: { display: 'none', flex: '2' }
-        })
-      }
-    }
-  }
-  toggle2(e) {
-    if (this.state.isDvisible === 1) {
-      if (this.state.isHvisible === 1) {
-        this.setState({
-          isDvisible: 1,
-          isEvisible: 1,
-          isHvisible: 1,
-          visibleD: { display: 'inline', flex: '2' },
-          visibleE: { display: 'inline', flex: '3' },
-          visibleH: { display: 'inline', flex: '2' }
-        })
-      } else {
-        this.setState({
-          isDvisible: 1,
-          isEvisible: 1,
-          isHvisible: 0,
+          isDvisible: true,
+          isEvisible: true,
+          isHvisible: false,
           visibleD: { display: 'inline', flex: '2' },
           visibleE: { display: 'inline', flex: '3' },
           visibleH: { display: 'none', flex: '2' }
         })
-      }
-    } else {
-      if (this.state.isHvisible === 1) {
-        this.setState({
-          isDvisible: 0,
-          isEvisible: 1,
-          isHvisible: 1,
-          visibleD: { display: 'none', flex: '2' },
-          visibleE: { display: 'inline', flex: '3' },
-          visibleH: { display: 'inline', flex: '2' }
-        })
       } else {
-        this.setState({
-          isDvisible: 0,
-          isEvisible: 1,
-          isHvisible: 0,
-          visibleD: { display: 'none', flex: '2' },
-          visibleE: { display: 'inline', flex: '3' },
-          visibleH: { display: 'none', flex: '2' }
-        })
-      }
-    }
-  }
-  toggle3(e) {
-    if (this.state.isDvisible === 1) {
-      if (this.state.isEvisible === 1) {
-        this.setState({
-          isDvisible: 1,
-          isEvisible: 1,
-          isHvisible: 1,
-          visibleD: { display: 'inline', flex: '2' },
-          visibleE: { display: 'inline', flex: '3' },
-          visibleH: { display: 'inline', flex: '2' }
-        })
-      } else {
-        this.setState({
-          isDvisible: 1,
-          isEvisible: 0,
-          isHvisible: 1,
-          visibleD: { display: 'inline', flex: '2' },
-          visibleE: { display: 'none', flex: '3' },
-          visibleH: { display: 'inline', flex: '2' }
-        })
-      }
-    } else {
-      if (this.state.isEvisible === 1) {
-        this.setState({
-          isDvisible: 0,
-          isEvisible: 1,
-          isHvisible: 1,
-          visibleD: { display: 'none', flex: '2' },
-          visibleE: { display: 'inline', flex: '3' },
-          visibleH: { display: 'inline', flex: '2' }
-        })
-      } else {
-        this.setState({
-          isDvisible: 0,
-          isEvisible: 0,
-          isHvisible: 1,
-          visibleD: { display: 'none', flex: '2' },
-          visibleE: { display: 'none', flex: '3' },
-          visibleH: { display: 'inline', flex: '2' }
-        })
+        if (bDetails === true && bHistory === true) {
+          this.setState({
+            isDvisible: true,
+            isEvisible: false,
+            isHvisible: true,
+            visibleD: { display: 'inline', flex: '2' },
+            visibleE: { display: 'none', flex: '3' },
+            visibleH: { display: 'inline', flex: '2' }
+          })
+        } else {
+          if (bEditor === true && bHistory === true) {
+            this.setState({
+              isDvisible: false,
+              isEvisible: true,
+              isHvisible: true,
+              visibleD: { display: 'none', flex: '2' },
+              visibleE: { display: 'inline', flex: '3' },
+              visibleH: { display: 'inline', flex: '2' }
+            })
+          } else {
+            if (bDetails === true) {
+              this.setState({
+                isDvisible: true,
+                isEvisible: false,
+                isHvisible: false,
+                visibleD: { display: 'inline', flex: '2' },
+                visibleE: { display: 'none', flex: '3' },
+                visibleH: { display: 'none', flex: '2' }
+              })
+            } else {
+              if (bEditor === true) {
+                this.setState({
+                  isDvisible: false,
+                  isEvisible: true,
+                  isHvisible: false,
+                  visibleD: { display: 'none', flex: '2' },
+                  visibleE: { display: 'inline', flex: '3' },
+                  visibleH: { display: 'none', flex: '2' }
+                })
+              } else {
+                if (bHistory === true) {
+                  this.setState({
+                    isDvisible: false,
+                    isEvisible: false,
+                    isHvisible: true,
+                    visibleD: { display: 'none', flex: '2' },
+                    visibleE: { display: 'none', flex: '3' },
+                    visibleH: { display: 'inline', flex: '2' }
+                  })
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
 
-  toggleDETAILS(e) {
-    this.setState({
-      isDvisible: 1,
-      isEvisible: 0,
-      isHvisible: 0,
-      visibleD: { display: 'inline', flex: '2' },
-      visibleE: { display: 'none', flex: '3' },
-      visibleH: { display: 'none', flex: '2' }
-    })
+  DetailsClick = e => this.toggletheVisibility(true, false, false, e)
+
+  EditorClick = e => this.toggletheVisibility(false, true, false, e)
+
+  HistoryClick = e => this.toggletheVisibility(false, false, true, e)
+
+  DetailsplusClick(e) {
+    if (this.state.isEvisible === true && this.state.isHvisible === true) {
+      this.toggletheVisibility(true, true, true, e)
+    } else {
+      if (this.state.isEvisible === true) {
+        this.toggletheVisibility(true, true, false, e)
+      } else {
+        if (this.state.isHvisible === true) {
+          this.toggletheVisibility(true, false, true, e)
+        } else {
+          this.toggletheVisibility(true, false, false, e)
+        }
+      }
+    }
   }
 
-  toggleEDIT(e) {
-    this.setState({
-      isDvisible: 0,
-      isEvisible: 1,
-      isHvisible: 0,
-      visibleD: { display: 'none', flex: '2' },
-      visibleE: { display: 'inline', flex: '3' },
-      visibleH: { display: 'none', flex: '2' }
-    })
+  EditorplusClick(e) {
+    console.log(this)
+    if (this.state.isDvisible === true && this.state.isHvisible === true) {
+      this.toggletheVisibility(true, true, true, e)
+    } else {
+      if (this.state.isDvisible === true) {
+        this.toggletheVisibility(true, true, false, e)
+      } else {
+        if (this.state.isHvisible === true) {
+          this.toggletheVisibility(false, true, true, e)
+        } else {
+          this.toggletheVisibility(false, true, false, e)
+          console.log(this)
+        }
+      }
+    }
   }
 
-  toggleHISTORY(e) {
-    this.setState({
-      isDvisible: 0,
-      isEvisible: 0,
-      isHvisible: 1,
-      visibleD: { display: 'none', flex: '2' },
-      visibleE: { display: 'none', flex: '3' },
-      visibleH: { display: 'inline', flex: '2' }
-    })
+  HistoryplusClick(e) {
+    if (this.state.isDvisible === true && this.state.isEvisible === true) {
+      this.toggletheVisibility(true, true, true, e)
+    } else {
+      if (this.state.isDvisible === true) {
+        this.toggletheVisibility(true, false, true, e)
+      } else {
+        if (this.state.isEvisible === true) {
+          this.toggletheVisibility(false, true, true, e)
+        } else {
+          this.toggletheVisibility(false, false, true, e)
+        }
+      }
+    }
   }
 
   render() {
@@ -207,22 +170,30 @@ export default class Content extends React.Component {
               <Button
                 name="details"
                 active={'details'}
-                onClick={this.toggleDETAILS.bind(this)}
+                onClick={this.DetailsClick}
               >
-                Details{' '}
+                {' '}Details{' '}
               </Button>
             </Menu.Item>
             <Menu.Item name="editor">
-              <Button name="editor" onClick={this.toggleEDIT.bind(this)}>
+              <Button name="editor" onClick={this.EditorClick}>
                 Editor{' '}
               </Button>
-              <Button name="2" icon="plus" onClick={this.toggle2.bind(this)} />
+              <Button
+                name="2"
+                icon="plus"
+                onClick={this.EditorplusClick.bind(this)}
+              />
             </Menu.Item>
             <Menu.Item name="history">
-              <Button name="history" onClick={this.toggleHISTORY.bind(this)}>
+              <Button name="history" onClick={this.HistoryClick}>
                 History{' '}
               </Button>
-              <Button name="3" icon="plus" onClick={this.toggle3.bind(this)} />
+              <Button
+                name="3"
+                icon="plus"
+                onClick={this.HistoryplusClick.bind(this)}
+              />
             </Menu.Item>
           </Menu>
           <Segment>
@@ -251,25 +222,33 @@ export default class Content extends React.Component {
         <div style={visibleE}>
           <Menu attached="top" size="mini">
             <Menu.Item name="details">
-              <Button name="details" onClick={this.toggleDETAILS.bind(this)}>
+              <Button name="details" onClick={this.DetailsClick}>
                 Details{' '}
               </Button>
-              <Button name="1" icon="plus" onClick={this.toggle1.bind(this)} />
+              <Button
+                name="1"
+                icon="plus"
+                onClick={this.DetailsplusClick.bind(this)}
+              />
             </Menu.Item>
             <Menu.Item name="editor">
               <Button
                 name="editor"
                 active={'editor'}
-                onClick={this.toggleEDIT.bind(this)}
+                onClick={this.EditorClick}
               >
                 Editor{' '}
               </Button>
             </Menu.Item>
             <Menu.Item name="history">
-              <Button name="history" onClick={this.toggleHISTORY.bind(this)}>
+              <Button name="history" onClick={this.HistoryClick}>
                 History{' '}
               </Button>
-              <Button name="3" icon="plus" onClick={this.toggle3.bind(this)} />
+              <Button
+                name="3"
+                icon="plus"
+                onClick={this.HistoryplusClick.bind(this)}
+              />
             </Menu.Item>
           </Menu>
           <Segment>
@@ -298,22 +277,30 @@ export default class Content extends React.Component {
         <div style={visibleH}>
           <Menu attached="top" size="mini">
             <Menu.Item name="details">
-              <Button name="details" onClick={this.toggleDETAILS.bind(this)}>
+              <Button name="details" onClick={this.DetailsClick}>
                 Details{' '}
               </Button>
-              <Button name="1" icon="plus" onClick={this.toggle1.bind(this)} />
+              <Button
+                name="1"
+                icon="plus"
+                onClick={this.DetailsplusClick.bind(this)}
+              />
             </Menu.Item>
             <Menu.Item name="editor">
-              <Button name="editor" onClick={this.toggleEDIT.bind(this)}>
+              <Button name="editor" onClick={this.EditorClick}>
                 Editor{' '}
               </Button>
-              <Button name="2" icon="plus" onClick={this.toggle2.bind(this)} />
+              <Button
+                name="2"
+                icon="plus"
+                onClick={this.EditorplusClick.bind(this)}
+              />
             </Menu.Item>
             <Menu.Item name="history">
               <Button
                 name="history"
                 active={'history'}
-                onClick={this.toggleHISTORY.bind(this)}
+                onClick={this.HistoryClick}
               >
                 History{' '}
               </Button>
@@ -347,3 +334,5 @@ export default class Content extends React.Component {
   }
 }
 export { Content }
+
+export default Content
