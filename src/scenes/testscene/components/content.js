@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
   Segment,
@@ -25,6 +26,8 @@ class Content extends Component {
     }
   }
 
+
+
   toggletheVisibility(bDetails, bEditor, bHistory, e) {
     if (bDetails === true && bEditor === true && bHistory === true) {
       this.setState({
@@ -35,6 +38,7 @@ class Content extends Component {
         visibleE: { display: 'inline', flex: '3' },
         visibleH: { display: 'inline', flex: '2' }
       })
+      this.toggleDropdown(true, true, true, e)
     } else {
       if (bDetails === true && bEditor === true) {
         this.setState({
@@ -45,6 +49,7 @@ class Content extends Component {
           visibleE: { display: 'inline', flex: '3' },
           visibleH: { display: 'none', flex: '2' }
         })
+        this.toggleDropdown(true, true, false, e)
       } else {
         if (bDetails === true && bHistory === true) {
           this.setState({
@@ -55,6 +60,7 @@ class Content extends Component {
             visibleE: { display: 'none', flex: '3' },
             visibleH: { display: 'inline', flex: '2' }
           })
+          this.toggleDropdown(true, false, true, e)
         } else {
           if (bEditor === true && bHistory === true) {
             this.setState({
@@ -65,6 +71,7 @@ class Content extends Component {
               visibleE: { display: 'inline', flex: '3' },
               visibleH: { display: 'inline', flex: '2' }
             })
+            this.toggleDropdown(false, true, true, e)
           } else {
             if (bDetails === true) {
               this.setState({
@@ -75,6 +82,7 @@ class Content extends Component {
                 visibleE: { display: 'none', flex: '3' },
                 visibleH: { display: 'none', flex: '2' }
               })
+              this.toggleDropdown(true, false, false, e)
             } else {
               if (bEditor === true) {
                 this.setState({
@@ -85,6 +93,7 @@ class Content extends Component {
                   visibleE: { display: 'inline', flex: '3' },
                   visibleH: { display: 'none', flex: '2' }
                 })
+                this.toggleDropdown(false, true, false, e)
               } else {
                 if (bHistory === true) {
                   this.setState({
@@ -95,6 +104,7 @@ class Content extends Component {
                     visibleE: { display: 'none', flex: '3' },
                     visibleH: { display: 'inline', flex: '2' }
                   })
+                  this.toggleDropdown(false, false, true, e)
                 }
               }
             }
@@ -102,8 +112,16 @@ class Content extends Component {
         }
       }
     }
+  }
 
-    if (bDetails === true && bEditor === true && bHistory === true) {
+  toggleDropdown(bDetails, bEditor, bHistory, e) {
+    console.log("c" + this.refs.content.offsetWidth)
+    console.log("d" + this.refs.details.offsetWidth)
+    console.log("e" + this.refs.editor.offsetWidth)
+    console.log("h" + this.refs.history.offsetWidth)
+    if ((bDetails === true && this.refs.details.offsetWidth < 500) ||
+      (bEditor === true && this.refs.editor.offsetWidth < 500) ||
+      (bHistory === true && this.refs.history.offsetWidth < 500)) {
       this.setState({
         visibleMenu: { display: 'none' },
         visibleDropdown: { display: 'inline' }
@@ -178,8 +196,8 @@ class Content extends Component {
     const { visibleMenu } = this.state
 
     return (
-      <div style={{ display: 'flex' }}>
-        <div style={visibleD}>
+      <div style={{ display: 'flex' }} ref="content">
+        <div style={visibleD} ref="details" id='deetails'>
           <Menu attached="top" size="mini">
             <Menu.Item name="details" style={visibleMenu}>
               <Button
@@ -212,7 +230,7 @@ class Content extends Component {
             </Menu.Item>
 
             <Menu.Item name="Dropdown" style={visibleDropdown}>
-              <Dropdown button placeholder="Details">
+              <Dropdown button placeholder="Details" basic simple item>
                 <Dropdown.Menu>
                   <Dropdown.Item>
                     <Button
@@ -271,7 +289,7 @@ class Content extends Component {
           </Segment>
         </div>
 
-        <div style={visibleE}>
+        <div style={visibleE} ref="editor">
           <Menu attached="top" size="mini">
             <Menu.Item name="details" style={visibleMenu}>
               <Button name="details" onClick={this.DetailsClick}>
@@ -304,10 +322,10 @@ class Content extends Component {
             </Menu.Item>
 
             <Menu.Item name="Dropdown" style={visibleDropdown}>
-              <Dropdown button placeholder="Editor">
+              <Dropdown button placeholder="Editor" basic simple item>
                 <Dropdown.Menu>
                   <Dropdown.Item>
-                    <Button name="details" onClick={this.DetailsClick} basic>
+                    <Button name="details" onClick={this.DetailsClick}>
                       Details{' '}
                     </Button>
                     <Button
@@ -321,13 +339,12 @@ class Content extends Component {
                       name="editor"
                       active={'editor'}
                       onClick={this.EditorClick}
-                      basic
                     >
                       Editor{' '}
                     </Button>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Button name="history" onClick={this.HistoryClick} basic>
+                    <Button name="history" onClick={this.HistoryClick}>
                       History{' '}
                     </Button>
                     <Button
@@ -363,7 +380,7 @@ class Content extends Component {
             <br />
           </Segment>
         </div>
-        <div style={visibleH}>
+        <div style={visibleH} ref="history">
           <Menu attached="top" size="mini">
             <Menu.Item name="details" style={visibleMenu}>
               <Button name="details" onClick={this.DetailsClick}>
@@ -396,7 +413,7 @@ class Content extends Component {
             </Menu.Item>
 
             <Menu.Item name="Dropdown" style={visibleDropdown}>
-              <Dropdown button placeholder="History">
+              <Dropdown button placeholder="History" basic simple item>
                 <Dropdown.Menu>
                   <Dropdown.Item>
                     <Button name="details" onClick={this.DetailsClick}>
