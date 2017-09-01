@@ -119,9 +119,13 @@ class Content extends Component {
     console.log("d" + this.refs.details.offsetWidth)
     console.log("e" + this.refs.editor.offsetWidth)
     console.log("h" + this.refs.history.offsetWidth)
-    if ((bDetails === true && this.refs.details.offsetWidth < 500) ||
-      (bEditor === true && this.refs.editor.offsetWidth < 500) ||
-      (bHistory === true && this.refs.history.offsetWidth < 500)) {
+    if ((bDetails === true && bEditor === true && bHistory === true && this.refs.content.offsetWidth < 1500) ||
+      (bDetails === true && bEditor === true && bHistory === false && this.refs.content.offsetWidth < 1000) ||
+      (bDetails === true && bEditor === false && bHistory === true && this.refs.content.offsetWidth < 1000) ||
+      (bDetails === false && bEditor === true && bHistory === true && this.refs.content.offsetWidth < 1000) ||
+      (bDetails === true && bEditor === false && bHistory === false && this.refs.content.offsetWidth < 500) ||
+      (bDetails === false && bEditor === true && bHistory === false && this.refs.content.offsetWidth < 500) ||
+      (bDetails === false && bEditor === false && bHistory === true && this.refs.content.offsetWidth < 500)) {
       this.setState({
         visibleMenu: { display: 'none' },
         visibleDropdown: { display: 'inline' }
