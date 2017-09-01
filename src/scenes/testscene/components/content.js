@@ -1,4 +1,3 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
   Segment,
@@ -10,6 +9,9 @@ import {
   HistoryClick
 } from 'semantic-ui-react'
 import styled from 'styled-components'
+import { Details } from '.'
+import { Editor } from '.'
+import { History } from '.'
 
 class Content extends Component {
   constructor(props) {
@@ -25,8 +27,6 @@ class Content extends Component {
       visibleDropdown: { display: 'none' }
     }
   }
-
-
 
   toggletheVisibility(bDetails, bEditor, bHistory, e) {
     if (bDetails === true && bEditor === true && bHistory === true) {
@@ -115,17 +115,40 @@ class Content extends Component {
   }
 
   toggleDropdown(bDetails, bEditor, bHistory, e) {
-    console.log("c" + this.refs.content.offsetWidth)
-    console.log("d" + this.refs.details.offsetWidth)
-    console.log("e" + this.refs.editor.offsetWidth)
-    console.log("h" + this.refs.history.offsetWidth)
-    if ((bDetails === true && bEditor === true && bHistory === true && this.refs.content.offsetWidth < 1500) ||
-      (bDetails === true && bEditor === true && bHistory === false && this.refs.content.offsetWidth < 1000) ||
-      (bDetails === true && bEditor === false && bHistory === true && this.refs.content.offsetWidth < 1000) ||
-      (bDetails === false && bEditor === true && bHistory === true && this.refs.content.offsetWidth < 1000) ||
-      (bDetails === true && bEditor === false && bHistory === false && this.refs.content.offsetWidth < 500) ||
-      (bDetails === false && bEditor === true && bHistory === false && this.refs.content.offsetWidth < 500) ||
-      (bDetails === false && bEditor === false && bHistory === true && this.refs.content.offsetWidth < 500)) {
+    console.log('c' + this.refs.content.offsetWidth)
+    console.log('d' + this.refs.details.offsetWidth)
+    console.log('e' + this.refs.editor.offsetWidth)
+    console.log('h' + this.refs.history.offsetWidth)
+    if (
+      (bDetails === true &&
+        bEditor === true &&
+        bHistory === true &&
+        this.refs.content.offsetWidth < 1500) ||
+      (bDetails === true &&
+        bEditor === true &&
+        bHistory === false &&
+        this.refs.content.offsetWidth < 1000) ||
+      (bDetails === true &&
+        bEditor === false &&
+        bHistory === true &&
+        this.refs.content.offsetWidth < 1000) ||
+      (bDetails === false &&
+        bEditor === true &&
+        bHistory === true &&
+        this.refs.content.offsetWidth < 1000) ||
+      (bDetails === true &&
+        bEditor === false &&
+        bHistory === false &&
+        this.refs.content.offsetWidth < 500) ||
+      (bDetails === false &&
+        bEditor === true &&
+        bHistory === false &&
+        this.refs.content.offsetWidth < 500) ||
+      (bDetails === false &&
+        bEditor === false &&
+        bHistory === true &&
+        this.refs.content.offsetWidth < 500)
+    ) {
       this.setState({
         visibleMenu: { display: 'none' },
         visibleDropdown: { display: 'inline' }
@@ -201,7 +224,7 @@ class Content extends Component {
 
     return (
       <div style={{ display: 'flex' }} ref="content">
-        <div style={visibleD} ref="details" id='deetails'>
+        <div style={visibleD} ref="details" id="deetails">
           <Menu attached="top" size="mini">
             <Menu.Item name="details" style={visibleMenu}>
               <Button
@@ -270,26 +293,7 @@ class Content extends Component {
             </Menu.Item>
           </Menu>
           <Segment>
-            Details
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+            <Details />
           </Segment>
         </div>
 
@@ -362,26 +366,7 @@ class Content extends Component {
             </Menu.Item>
           </Menu>
           <Segment>
-            Editor
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+            <Editor />
           </Segment>
         </div>
         <div style={visibleH} ref="history">
@@ -453,26 +438,7 @@ class Content extends Component {
             </Menu.Item>
           </Menu>
           <Segment>
-            History
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+            <History />
           </Segment>
         </div>
       </div>

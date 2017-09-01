@@ -1,3 +1,6 @@
 export { testmain } from './testcomp'
 export { Content } from './content'
 export { Filebrowser } from './filebrowser'
+export { Details } from './content_details'
+export { Editor } from './content_editor'
+export { History } from './content_history'

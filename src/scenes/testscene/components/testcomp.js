@@ -1,4 +1,3 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
   Sidebar,
@@ -33,7 +32,13 @@ class testmain extends Component {
       isCxvisible: 0,
       visibleFB: { display: 'inline', flex: '2' },
       visibleC: { display: 'inline', flex: '8' },
-      visibleCx: { display: 'none', flex: '4', name: 'add Context', icon1: 'window restore', icon2: 'plus' }
+      visibleCx: {
+        display: 'none',
+        flex: '4',
+        name: 'add Context',
+        icon1: 'window restore',
+        icon2: 'plus'
+      }
     }
   }
 
@@ -45,7 +50,13 @@ class testmain extends Component {
           isCxvisible: 1,
           visibleFB: { display: 'none', flex: '1' },
           visibleC: { display: 'inline', flex: '7' },
-          visibleCx: { display: 'inline', flex: '3', name: 'close Context', icon1: 'window close outline', icon2: 'null' }
+          visibleCx: {
+            display: 'inline',
+            flex: '3',
+            name: 'close Context',
+            icon1: 'window close outline',
+            icon2: 'null'
+          }
         })
       } else {
         this.setState({
@@ -53,7 +64,13 @@ class testmain extends Component {
           isCxvisible: 0,
           visibleFB: { display: 'none', flex: '1' },
           visibleC: { display: 'inline', flex: '1' },
-          visibleCx: { display: 'none', flex: '1', name: 'add Context', icon1: 'window restore', icon2: 'plus' }
+          visibleCx: {
+            display: 'none',
+            flex: '1',
+            name: 'add Context',
+            icon1: 'window restore',
+            icon2: 'plus'
+          }
         })
       }
     } else {
@@ -63,7 +80,13 @@ class testmain extends Component {
           isCxvisible: 1,
           visibleFB: { display: 'inline', flex: '2' },
           visibleC: { display: 'inline', flex: '5' },
-          visibleCx: { display: 'inline', flex: '3', name: 'close Context', icon1: 'window close outline', icon2: 'null' }
+          visibleCx: {
+            display: 'inline',
+            flex: '3',
+            name: 'close Context',
+            icon1: 'window close outline',
+            icon2: 'null'
+          }
         })
       } else {
         this.setState({
@@ -71,7 +94,13 @@ class testmain extends Component {
           isCxvisible: 0,
           visibleFB: { display: 'inline', flex: '2' },
           visibleC: { display: 'inline', flex: '8' },
-          visibleCx: { display: 'none', flex: '1', name: 'add Context', icon1: 'window restore', icon2: 'plus' }
+          visibleCx: {
+            display: 'none',
+            flex: '1',
+            name: 'add Context',
+            icon1: 'window restore',
+            icon2: 'plus'
+          }
         })
       }
     }
@@ -85,7 +114,13 @@ class testmain extends Component {
           isCxvisible: 1,
           visibleFB: { display: 'inline', flex: '2' },
           visibleC: { display: 'inline', flex: '5' },
-          visibleCx: { display: 'inline', flex: '3', name: 'close Context', icon1: 'window close outline', icon2: 'null' }
+          visibleCx: {
+            display: 'inline',
+            flex: '3',
+            name: 'close Context',
+            icon1: 'window close outline',
+            icon2: 'null'
+          }
         })
       } else {
         this.setState({
@@ -93,7 +128,13 @@ class testmain extends Component {
           isCxvisible: 1,
           visibleFB: { display: 'none', flex: '1' },
           visibleC: { display: 'inline', flex: '7' },
-          visibleCx: { display: 'inline', flex: '3', name: 'close Context', icon1: 'window close outline', icon2: 'null' }
+          visibleCx: {
+            display: 'inline',
+            flex: '3',
+            name: 'close Context',
+            icon1: 'window close outline',
+            icon2: 'null'
+          }
         })
       }
     } else {
@@ -103,7 +144,13 @@ class testmain extends Component {
           isCxvisible: 0,
           visibleFB: { display: 'inline', flex: '2' },
           visibleC: { display: 'inline', flex: '8' },
-          visibleCx: { display: 'none', flex: '1', name: 'add Context', icon1: 'window restore', icon2: 'plus' }
+          visibleCx: {
+            display: 'none',
+            flex: '1',
+            name: 'add Context',
+            icon1: 'window restore',
+            icon2: 'plus'
+          }
         })
       } else {
         this.setState({
@@ -111,7 +158,13 @@ class testmain extends Component {
           isCxvisible: 0,
           visibleFB: { display: 'none', flex: '1' },
           visibleC: { display: 'inline', flex: '10' },
-          visibleCx: { display: 'none', flex: '1', name: 'add Context', icon1: 'window restore', icon2: 'plus' }
+          visibleCx: {
+            display: 'none',
+            flex: '1',
+            name: 'add Context',
+            icon1: 'window restore',
+            icon2: 'plus'
+          }
         })
       }
     }
