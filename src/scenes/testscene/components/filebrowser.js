@@ -9,50 +9,59 @@ export default class Filebrowser extends React.Component {
           <List.Item>
             <List.Icon name="folder" />
             <List.Content>
-              <List.Header>src</List.Header>
-              <List.Description>Source files for project</List.Description>
+              <List.Header>Repo1</List.Header>
+              <List.Description>example Repository</List.Description>
               <List.List>
                 <List.Item>
                   <List.Icon name="folder" />
                   <List.Content>
-                    <List.Header>site</List.Header>
-                    <List.Description>Your site's theme</List.Description>
+                    <List.Header>Folder1</List.Header>
                   </List.Content>
                 </List.Item>
                 <List.Item>
                   <List.Icon name="folder" />
                   <List.Content>
-                    <List.Header>themes</List.Header>
-                    <List.Description>Packaged theme files</List.Description>
+                    <List.Header>Folder2</List.Header>
                     <List.List>
                       <List.Item>
-                        <List.Icon name="folder" />
+                        <List.Icon name="file text outline" />
                         <List.Content>
-                          <List.Header>default</List.Header>
-                          <List.Description>
-                            Default packaged theme
-                          </List.Description>
+                          <List.Header>File1.dol</List.Header>
+                          <List.List>
+                            <List.Item>
+                              <List.Icon name="file outline" />
+                              <List.Content>
+                                <List.Header>oms1</List.Header>
+                              </List.Content>
+                            </List.Item>
+                            <List.Item>
+                              <List.Icon name="file outline" />
+                              <List.Content>
+                                <List.Header>oms2</List.Header>
+                              </List.Content>
+                            </List.Item>
+                          </List.List>
                         </List.Content>
                       </List.Item>
                       <List.Item>
-                        <List.Icon name="folder" />
+                        <List.Icon name="file pdf outline" />
                         <List.Content>
-                          <List.Header>my_theme</List.Header>
-                          <List.Description>
-                            Packaged themes are also available in this folder
-                          </List.Description>
+                          <List.Header>File2.pdf</List.Header>
+                        </List.Content>
+                      </List.Item>
+                      <List.Item>
+                        <List.Icon name="file text" />
+                        <List.Content>
+                          <List.Header>readme.md</List.Header>
                         </List.Content>
                       </List.Item>
                     </List.List>
                   </List.Content>
                 </List.Item>
                 <List.Item>
-                  <List.Icon name="file" />
+                  <List.Icon name="folder" />
                   <List.Content>
-                    <List.Header>theme.config</List.Header>
-                    <List.Description>
-                      Config file for setting packaged themes
-                    </List.Description>
+                    <List.Header>Folder3</List.Header>
                   </List.Content>
                 </List.Item>
               </List.List>
