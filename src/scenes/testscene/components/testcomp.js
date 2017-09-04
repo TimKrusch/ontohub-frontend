@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
   Sidebar,
@@ -10,11 +11,12 @@ import {
   Header,
   state,
   toggleVisibility,
-  toggle1,
-  toggle2,
+  toggleFB,
+  toggleCx,
   List
 } from 'semantic-ui-react'
 import { Content } from '.'
+import { Context } from '.'
 import { Filebrowser } from '.'
 import styled from 'styled-components'
 
@@ -32,31 +34,19 @@ class testmain extends Component {
       isCxvisible: 0,
       visibleFB: { display: 'inline', flex: '2' },
       visibleC: { display: 'inline', flex: '8' },
-      visibleCx: {
-        display: 'none',
-        flex: '4',
-        name: 'add Context',
-        icon1: 'window restore',
-        icon2: 'plus'
-      }
+      visibleCx: { display: 'none', flex: '4', name: 'add Context', icon1: 'window restore', icon2: 'plus' }
     }
   }
 
-  toggle1(e) {
+  toggleFB(e) {
     if (this.state.isFBvisible === 1) {
       if (this.state.isCxvisible === 1) {
         this.setState({
           isFBvisible: 0,
           isCxvisible: 1,
           visibleFB: { display: 'none', flex: '1' },
-          visibleC: { display: 'inline', flex: '7' },
-          visibleCx: {
-            display: 'inline',
-            flex: '3',
-            name: 'close Context',
-            icon1: 'window close outline',
-            icon2: 'null'
-          }
+          visibleC: { display: 'inline', flex: '6' },
+          visibleCx: { display: 'inline', flex: '4', name: 'close Context', icon1: 'window close outline', icon2: 'null' }
         })
       } else {
         this.setState({
@@ -64,13 +54,7 @@ class testmain extends Component {
           isCxvisible: 0,
           visibleFB: { display: 'none', flex: '1' },
           visibleC: { display: 'inline', flex: '1' },
-          visibleCx: {
-            display: 'none',
-            flex: '1',
-            name: 'add Context',
-            icon1: 'window restore',
-            icon2: 'plus'
-          }
+          visibleCx: { display: 'none', flex: '1', name: 'add Context', icon1: 'window restore', icon2: 'plus' }
         })
       }
     } else {
@@ -80,13 +64,7 @@ class testmain extends Component {
           isCxvisible: 1,
           visibleFB: { display: 'inline', flex: '2' },
           visibleC: { display: 'inline', flex: '5' },
-          visibleCx: {
-            display: 'inline',
-            flex: '3',
-            name: 'close Context',
-            icon1: 'window close outline',
-            icon2: 'null'
-          }
+          visibleCx: { display: 'inline', flex: '3', name: 'close Context', icon1: 'window close outline', icon2: 'null' }
         })
       } else {
         this.setState({
@@ -94,19 +72,13 @@ class testmain extends Component {
           isCxvisible: 0,
           visibleFB: { display: 'inline', flex: '2' },
           visibleC: { display: 'inline', flex: '8' },
-          visibleCx: {
-            display: 'none',
-            flex: '1',
-            name: 'add Context',
-            icon1: 'window restore',
-            icon2: 'plus'
-          }
+          visibleCx: { display: 'none', flex: '1', name: 'add Context', icon1: 'window restore', icon2: 'plus' }
         })
       }
     }
   }
 
-  toggle2(e) {
+  toggleCx(e) {
     if (this.state.isCxvisible === 0) {
       if (this.state.isFBvisible === 1) {
         this.setState({
@@ -114,27 +86,15 @@ class testmain extends Component {
           isCxvisible: 1,
           visibleFB: { display: 'inline', flex: '2' },
           visibleC: { display: 'inline', flex: '5' },
-          visibleCx: {
-            display: 'inline',
-            flex: '3',
-            name: 'close Context',
-            icon1: 'window close outline',
-            icon2: 'null'
-          }
+          visibleCx: { display: 'inline', flex: '3', name: 'close Context', icon1: 'window close outline', icon2: 'null' }
         })
       } else {
         this.setState({
           isFBvisible: 0,
           isCxvisible: 1,
           visibleFB: { display: 'none', flex: '1' },
-          visibleC: { display: 'inline', flex: '7' },
-          visibleCx: {
-            display: 'inline',
-            flex: '3',
-            name: 'close Context',
-            icon1: 'window close outline',
-            icon2: 'null'
-          }
+          visibleC: { display: 'inline', flex: '6' },
+          visibleCx: { display: 'inline', flex: '4', name: 'close Context', icon1: 'window close outline', icon2: 'null' }
         })
       }
     } else {
@@ -144,13 +104,7 @@ class testmain extends Component {
           isCxvisible: 0,
           visibleFB: { display: 'inline', flex: '2' },
           visibleC: { display: 'inline', flex: '8' },
-          visibleCx: {
-            display: 'none',
-            flex: '1',
-            name: 'add Context',
-            icon1: 'window restore',
-            icon2: 'plus'
-          }
+          visibleCx: { display: 'none', flex: '1', name: 'add Context', icon1: 'window restore', icon2: 'plus' }
         })
       } else {
         this.setState({
@@ -158,13 +112,7 @@ class testmain extends Component {
           isCxvisible: 0,
           visibleFB: { display: 'none', flex: '1' },
           visibleC: { display: 'inline', flex: '10' },
-          visibleCx: {
-            display: 'none',
-            flex: '1',
-            name: 'add Context',
-            icon1: 'window restore',
-            icon2: 'plus'
-          }
+          visibleCx: { display: 'none', flex: '1', name: 'add Context', icon1: 'window restore', icon2: 'plus' }
         })
       }
     }
@@ -180,7 +128,7 @@ class testmain extends Component {
           <Button.Group>
             <Button
               basic
-              onClick={this.toggle1.bind(this)}
+              onClick={this.toggleFB.bind(this)}
               content="Filebrowser"
               icon="sitemap"
             />
@@ -206,7 +154,7 @@ class testmain extends Component {
 
           <Menu.Menu position="right">
             <Button.Group floated="right">
-              <Button basic onClick={this.toggle2.bind(this)}>
+              <Button basic onClick={this.toggleCx.bind(this)}>
                 <Icon.Group>
                   <Icon name={visibleCx.icon1} />
                   <Icon corner name={visibleCx.icon2} />
@@ -240,7 +188,9 @@ class testmain extends Component {
           <div style={visibleC}>
             <Content />
           </div>
-          <div style={visibleCx}>Context</div>
+          <div style={visibleCx}>
+            <Context />
+          </div>
         </div>
       </div>
     )

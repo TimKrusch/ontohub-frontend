@@ -1,11 +1,12 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
   Segment,
   Menu,
   Button,
+  Dropdown,
   DetailsClick,
   EditorClick,
-  Dropdown,
   HistoryClick
 } from 'semantic-ui-react'
 import styled from 'styled-components'
@@ -115,10 +116,6 @@ class Content extends Component {
   }
 
   toggleDropdown(bDetails, bEditor, bHistory, e) {
-    console.log('c' + this.refs.content.offsetWidth)
-    console.log('d' + this.refs.details.offsetWidth)
-    console.log('e' + this.refs.editor.offsetWidth)
-    console.log('h' + this.refs.history.offsetWidth)
     if (
       (bDetails === true &&
         bEditor === true &&
@@ -224,7 +221,7 @@ class Content extends Component {
 
     return (
       <div style={{ display: 'flex' }} ref="content">
-        <div style={visibleD} ref="details" id="deetails">
+        <div style={visibleD} ref="details">
           <Menu attached="top" size="mini">
             <Menu.Item name="details" style={visibleMenu}>
               <Button
