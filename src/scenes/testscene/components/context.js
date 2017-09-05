@@ -1,4 +1,3 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
   Segment,
@@ -84,14 +83,11 @@ class Context extends Component {
     return (
       <div style={{ display: 'flex' }} ref="context">
         <div style={visibleP} ref="prove">
-          <Menu attached="top" size="mini">
+          <Menu attached size="mini">
             <Menu.Item name="prove" style={visibleMenu}>
-              <Button
-                name="prove"
-                active={'prove'}
-                onClick={this.ProveClick}
-              >
-                {' '}Prove{' '}
+              <Button name="prove" active={'prove'} onClick={this.ProveClick}>
+                {' '}
+                Prove{' '}
               </Button>
             </Menu.Item>
             <Menu.Item name="translation" style={visibleMenu}>
@@ -113,7 +109,8 @@ class Context extends Component {
                       active={'prove'}
                       onClick={this.ProveClick}
                     >
-                      {' '}Prove{' '}
+                      {' '}
+                      Prove{' '}
                     </Button>
                   </Dropdown.Item>
                   <Dropdown.Item>
@@ -130,7 +127,7 @@ class Context extends Component {
               </Dropdown>
             </Menu.Item>
           </Menu>
-          <Segment>
+          <Segment attached>
             <Prove />
           </Segment>
         </div>
@@ -181,7 +178,7 @@ class Context extends Component {
               </Dropdown>
             </Menu.Item>
           </Menu>
-          <Segment>
+          <Segment attached>
             <Translation />
           </Segment>
         </div>
@@ -232,7 +229,7 @@ class Context extends Component {
               </Dropdown>
             </Menu.Item>
           </Menu>
-          <Segment>
+          <Segment attached>
             <GitCommit />
           </Segment>
         </div>

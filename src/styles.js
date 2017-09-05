@@ -7,7 +7,7 @@ export const sizes = {
   contentWidth: '1000px',
   headerPadding: '10px',
   menuHeight: '50px',
-  footerMargin: '100px'
+  footerMargin: '0px'
 }
 
 export default {

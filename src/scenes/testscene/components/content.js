@@ -1,4 +1,3 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
   Segment,
@@ -222,14 +221,15 @@ class Content extends Component {
     return (
       <div style={{ display: 'flex' }} ref="content">
         <div style={visibleD} ref="details">
-          <Menu attached="top" size="mini">
+          <Menu attached size="mini">
             <Menu.Item name="details" style={visibleMenu}>
               <Button
                 name="details"
                 active={'details'}
                 onClick={this.DetailsClick}
               >
-                {' '}Details{' '}
+                {' '}
+                Details{' '}
               </Button>
             </Menu.Item>
             <Menu.Item name="editor" style={visibleMenu}>
@@ -262,7 +262,8 @@ class Content extends Component {
                       active={'details'}
                       onClick={this.DetailsClick}
                     >
-                      {' '}Details{' '}
+                      {' '}
+                      Details{' '}
                     </Button>
                   </Dropdown.Item>
                   <Dropdown.Item>
@@ -289,13 +290,13 @@ class Content extends Component {
               </Dropdown>
             </Menu.Item>
           </Menu>
-          <Segment>
+          <Segment attached>
             <Details />
           </Segment>
         </div>
 
         <div style={visibleE} ref="editor">
-          <Menu attached="top" size="mini">
+          <Menu attached size="mini">
             <Menu.Item name="details" style={visibleMenu}>
               <Button name="details" onClick={this.DetailsClick}>
                 Details{' '}
@@ -362,12 +363,12 @@ class Content extends Component {
               </Dropdown>
             </Menu.Item>
           </Menu>
-          <Segment>
+          <Segment attached>
             <Editor />
           </Segment>
         </div>
         <div style={visibleH} ref="history">
-          <Menu attached="top" size="mini">
+          <Menu attached size="mini">
             <Menu.Item name="details" style={visibleMenu}>
               <Button name="details" onClick={this.DetailsClick}>
                 Details{' '}
@@ -434,7 +435,7 @@ class Content extends Component {
               </Dropdown>
             </Menu.Item>
           </Menu>
-          <Segment>
+          <Segment attached>
             <History />
           </Segment>
         </div>

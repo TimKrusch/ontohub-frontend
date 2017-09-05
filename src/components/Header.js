@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const StyledHeader = styled.div`
   background-color: ${({ theme }) => theme.colors.dark};
   color: ${({ theme }) => theme.colors.light} !important;
-  margin-bottom: 1em;
+  margin-bottom: 0em;
 `
 
 const InnerHeader = styled.div`
@@ -39,10 +39,10 @@ const InnerHeader = styled.div`
 `
 
 export const PaddedContainer = styled(Container)`
-  padding-bottom: ${({ theme }) => theme.sizes.headerPadding}
+  padding-bottom: ${({ theme }) => theme.sizes.headerPadding};
 `
 
-export const Header = (props) =>
+export const Header = props => (
   <StyledHeader>
     <InnerHeader
       heightTransitionDuration={props.heightTransitionDuration}
@@ -51,5 +51,6 @@ export const Header = (props) =>
       {props.children}
     </InnerHeader>
   </StyledHeader>
+)
 
 export default Header
