@@ -1,13 +1,6 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
-import {
-  Segment,
-  Menu,
-  Button,
-  Dropdown,
-  ProveClick,
-  TranslationClick,
-  GitCommitClick
-} from 'semantic-ui-react'
+import { Segment, Menu, Button, Dropdown } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { Prove } from '.'
 import { Translation } from '.'
@@ -69,9 +62,15 @@ class Context extends Component {
     }
   }
 
-  ProveClick = e => this.toggletheVisibility(true, false, false, e)
-  TranslationClick = e => this.toggletheVisibility(false, true, false, e)
-  GitCommitClick = e => this.toggletheVisibility(false, false, true, e)
+  ProveClick(e) {
+    this.toggletheVisibility(true, false, false, e)
+  }
+  TranslationClick(e) {
+    this.toggletheVisibility(false, true, false, e)
+  }
+  GitCommitClick(e) {
+    this.toggletheVisibility(false, false, true, e)
+  }
 
   render() {
     const { visibleP } = this.state
@@ -85,18 +84,25 @@ class Context extends Component {
         <div style={visibleP} ref="prove">
           <Menu attached size="mini">
             <Menu.Item name="prove" style={visibleMenu}>
-              <Button name="prove" active={'prove'} onClick={this.ProveClick}>
+              <Button
+                name="prove"
+                active={'prove'}
+                onClick={this.ProveClick.bind(this)}
+              >
                 {' '}
                 Prove{' '}
               </Button>
             </Menu.Item>
             <Menu.Item name="translation" style={visibleMenu}>
-              <Button name="translation" onClick={this.TranslationClick}>
+              <Button
+                name="translation"
+                onClick={this.TranslationClick.bind(this)}
+              >
                 Translation{' '}
               </Button>
             </Menu.Item>
             <Menu.Item name="gitcommit" style={visibleMenu}>
-              <Button name="gitcommit" onClick={this.GitCommitClick}>
+              <Button name="gitcommit" onClick={this.GitCommitClick.bind(this)}>
                 Git Commit{' '}
               </Button>
             </Menu.Item>
@@ -107,19 +113,25 @@ class Context extends Component {
                     <Button
                       name="prove"
                       active={'prove'}
-                      onClick={this.ProveClick}
+                      onClick={this.ProveClick.bind(this)}
                     >
                       {' '}
                       Prove{' '}
                     </Button>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Button name="translation" onClick={this.TranslationClick}>
+                    <Button
+                      name="translation"
+                      onClick={this.TranslationClick.bind(this)}
+                    >
                       Translation{' '}
                     </Button>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Button name="gitcommit" onClick={this.GitCommitClick}>
+                    <Button
+                      name="gitcommit"
+                      onClick={this.GitCommitClick.bind(this)}
+                    >
                       Git Commit{' '}
                     </Button>
                   </Dropdown.Item>
@@ -134,7 +146,7 @@ class Context extends Component {
         <div style={visibleT} ref="translation">
           <Menu attached="top" size="mini">
             <Menu.Item name="prove" style={visibleMenu}>
-              <Button name="prove" onClick={this.ProveClick}>
+              <Button name="prove" onClick={this.ProveClick.bind(this)}>
                 Prove{' '}
               </Button>
             </Menu.Item>
@@ -142,13 +154,13 @@ class Context extends Component {
               <Button
                 name="translation"
                 active={'translation'}
-                onClick={this.TranslationClick}
+                onClick={this.TranslationClick.bind(this)}
               >
                 Translation{' '}
               </Button>
             </Menu.Item>
             <Menu.Item name="gitcommit" style={visibleMenu}>
-              <Button name="gitcommit" onClick={this.GitCommitClick}>
+              <Button name="gitcommit" onClick={this.GitCommitClick.bind(this)}>
                 Git Commit{' '}
               </Button>
             </Menu.Item>
@@ -156,7 +168,7 @@ class Context extends Component {
               <Dropdown button placeholder="Translation" basic simple item>
                 <Dropdown.Menu>
                   <Dropdown.Item>
-                    <Button name="prove" onClick={this.ProveClick}>
+                    <Button name="prove" onClick={this.ProveClick.bind(this)}>
                       Prove{' '}
                     </Button>
                   </Dropdown.Item>
@@ -164,13 +176,16 @@ class Context extends Component {
                     <Button
                       name="translation"
                       active={'translation'}
-                      onClick={this.TranslationClick}
+                      onClick={this.TranslationClick.bind(this)}
                     >
                       Translation{' '}
                     </Button>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Button name="gitcommit" onClick={this.GitCommitClick}>
+                    <Button
+                      name="gitcommit"
+                      onClick={this.GitCommitClick.bind(this)}
+                    >
                       Git Commit{' '}
                     </Button>
                   </Dropdown.Item>
@@ -185,12 +200,15 @@ class Context extends Component {
         <div style={visibleGC} ref="gitcommit">
           <Menu attached="top" size="mini">
             <Menu.Item name="prove" style={visibleMenu}>
-              <Button name="prove" onClick={this.ProveClick}>
+              <Button name="prove" onClick={this.ProveClick.bind(this)}>
                 Prove{' '}
               </Button>
             </Menu.Item>
             <Menu.Item name="translation" style={visibleMenu}>
-              <Button name="translation" onClick={this.TranslationClick}>
+              <Button
+                name="translation"
+                onClick={this.TranslationClick.bind(this)}
+              >
                 Translation{' '}
               </Button>
             </Menu.Item>
@@ -198,7 +216,7 @@ class Context extends Component {
               <Button
                 name="gitcommit"
                 active={'gitcommit'}
-                onClick={this.GitCommitClick}
+                onClick={this.GitCommitClick.bind(this)}
               >
                 Git Commit{' '}
               </Button>
@@ -207,12 +225,15 @@ class Context extends Component {
               <Dropdown button placeholder="Git Commit" basic simple item>
                 <Dropdown.Menu>
                   <Dropdown.Item>
-                    <Button name="prove" onClick={this.ProveClick}>
+                    <Button name="prove" onClick={this.ProveClick.bind(this)}>
                       Prove{' '}
                     </Button>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Button name="translation" onClick={this.TranslationClick}>
+                    <Button
+                      name="translation"
+                      onClick={this.TranslationClick.bind(this)}
+                    >
                       Translation{' '}
                     </Button>
                   </Dropdown.Item>
@@ -220,7 +241,7 @@ class Context extends Component {
                     <Button
                       name="gitcommit"
                       active={'gitcommit'}
-                      onClick={this.GitCommitClick}
+                      onClick={this.GitCommitClick.bind(this)}
                     >
                       Git Commit{' '}
                     </Button>

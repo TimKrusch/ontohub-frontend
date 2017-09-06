@@ -1,15 +1,6 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
-import {
-  Segment,
-  Menu,
-  Button,
-  Dropdown,
-  DetailsClick,
-  EditorClick,
-  HistoryClick,
-  Visibility
-} from 'semantic-ui-react'
+import { Segment, Menu, Button, Dropdown } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { Details } from '.'
 import { Editor } from '.'
@@ -159,11 +150,17 @@ class Content extends Component {
     }
   }
 
-  DetailsClick = e => this.toggletheVisibility(true, false, false, e)
+  DetailsClick(e) {
+    this.toggletheVisibility(true, false, false, e)
+  }
 
-  EditorClick = e => this.toggletheVisibility(false, true, false, e)
+  EditorClick(e) {
+    this.toggletheVisibility(false, true, false, e)
+  }
 
-  HistoryClick = e => this.toggletheVisibility(false, false, true, e)
+  HistoryClick(e) {
+    this.toggletheVisibility(false, false, true, e)
+  }
 
   DetailsplusClick(e) {
     if (this.state.isEvisible === true && this.state.isHvisible === true) {
@@ -228,14 +225,14 @@ class Content extends Component {
               <Button
                 name="details"
                 active={'details'}
-                onClick={this.DetailsClick}
+                onClick={this.DetailsClick.bind(this)}
               >
                 {' '}
                 Details{' '}
               </Button>
             </Menu.Item>
             <Menu.Item name="editor" style={visibleMenu}>
-              <Button name="editor" onClick={this.EditorClick}>
+              <Button name="editor" onClick={this.EditorClick.bind(this)}>
                 Editor{' '}
               </Button>
               <Button
@@ -245,7 +242,7 @@ class Content extends Component {
               />
             </Menu.Item>
             <Menu.Item name="history" style={visibleMenu}>
-              <Button name="history" onClick={this.HistoryClick}>
+              <Button name="history" onClick={this.HistoryClick.bind(this)}>
                 History{' '}
               </Button>
               <Button
@@ -262,14 +259,14 @@ class Content extends Component {
                     <Button
                       name="details"
                       active={'details'}
-                      onClick={this.DetailsClick}
+                      onClick={this.DetailsClick.bind(this)}
                     >
                       {' '}
                       Details{' '}
                     </Button>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Button name="editor" onClick={this.EditorClick}>
+                    <Button name="editor" onClick={this.EditorClick.bind(this)}>
                       Editor{' '}
                     </Button>
                     <Button
@@ -279,7 +276,10 @@ class Content extends Component {
                     />
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Button name="history" onClick={this.HistoryClick}>
+                    <Button
+                      name="history"
+                      onClick={this.HistoryClick.bind(this)}
+                    >
                       History{' '}
                     </Button>
                     <Button
@@ -300,7 +300,7 @@ class Content extends Component {
         <div style={visibleE} ref="editor">
           <Menu attached size="mini">
             <Menu.Item name="details" style={visibleMenu}>
-              <Button name="details" onClick={this.DetailsClick}>
+              <Button name="details" onClick={this.DetailsClick.bind(this)}>
                 Details{' '}
               </Button>
               <Button
@@ -313,13 +313,13 @@ class Content extends Component {
               <Button
                 name="editor"
                 active={'editor'}
-                onClick={this.EditorClick}
+                onClick={this.EditorClick.bind(this)}
               >
                 Editor{' '}
               </Button>
             </Menu.Item>
             <Menu.Item name="history" style={visibleMenu}>
-              <Button name="history" onClick={this.HistoryClick}>
+              <Button name="history" onClick={this.HistoryClick.bind(this)}>
                 History{' '}
               </Button>
               <Button
@@ -333,7 +333,10 @@ class Content extends Component {
               <Dropdown button placeholder="Editor" basic simple item>
                 <Dropdown.Menu>
                   <Dropdown.Item>
-                    <Button name="details" onClick={this.DetailsClick}>
+                    <Button
+                      name="details"
+                      onClick={this.DetailsClick.bind(this)}
+                    >
                       Details{' '}
                     </Button>
                     <Button
@@ -346,13 +349,16 @@ class Content extends Component {
                     <Button
                       name="editor"
                       active={'editor'}
-                      onClick={this.EditorClick}
+                      onClick={this.EditorClick.bind(this)}
                     >
                       Editor{' '}
                     </Button>
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Button name="history" onClick={this.HistoryClick}>
+                    <Button
+                      name="history"
+                      onClick={this.HistoryClick.bind(this)}
+                    >
                       History{' '}
                     </Button>
                     <Button
@@ -372,7 +378,7 @@ class Content extends Component {
         <div style={visibleH} ref="history">
           <Menu attached size="mini">
             <Menu.Item name="details" style={visibleMenu}>
-              <Button name="details" onClick={this.DetailsClick}>
+              <Button name="details" onClick={this.DetailsClick.bind(this)}>
                 Details{' '}
               </Button>
               <Button
@@ -382,7 +388,7 @@ class Content extends Component {
               />
             </Menu.Item>
             <Menu.Item name="editor" style={visibleMenu}>
-              <Button name="editor" onClick={this.EditorClick}>
+              <Button name="editor" onClick={this.EditorClick.bind(this)}>
                 Editor{' '}
               </Button>
               <Button
@@ -395,7 +401,7 @@ class Content extends Component {
               <Button
                 name="history"
                 active={'history'}
-                onClick={this.HistoryClick}
+                onClick={this.HistoryClick.bind(this)}
               >
                 History{' '}
               </Button>
@@ -405,7 +411,10 @@ class Content extends Component {
               <Dropdown button placeholder="History" basic simple item>
                 <Dropdown.Menu>
                   <Dropdown.Item>
-                    <Button name="details" onClick={this.DetailsClick}>
+                    <Button
+                      name="details"
+                      onClick={this.DetailsClick.bind(this)}
+                    >
                       Details{' '}
                     </Button>
                     <Button
@@ -415,7 +424,7 @@ class Content extends Component {
                     />
                   </Dropdown.Item>
                   <Dropdown.Item>
-                    <Button name="editor" onClick={this.EditorClick}>
+                    <Button name="editor" onClick={this.EditorClick.bind(this)}>
                       Editor{' '}
                     </Button>
                     <Button
@@ -428,7 +437,7 @@ class Content extends Component {
                     <Button
                       name="history"
                       active={'history'}
-                      onClick={this.HistoryClick}
+                      onClick={this.HistoryClick.bind(this)}
                     >
                       History{' '}
                     </Button>

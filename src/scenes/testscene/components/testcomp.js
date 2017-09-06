@@ -1,23 +1,21 @@
 /*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
-  Sidebar,
   Icon,
-  Segment,
   Menu,
+  Modal,
+  Header,
   Dropdown,
   Button,
-  Breadcrumb,
-  Header,
-  state,
-  toggleVisibility,
-  toggleFB,
-  toggleCx,
-  List
+  Breadcrumb
 } from 'semantic-ui-react'
 import { Content } from '.'
 import { Context } from '.'
 import { Filebrowser } from '.'
+import { CreateFileModal } from '.'
+import { CreateFolderModal } from '.'
+import { UploadFileModal } from '.'
+import { DownloadFileModal } from '.'
 import styled from 'styled-components'
 
 const branches = [
@@ -277,7 +275,6 @@ class testmain extends Component {
               <Breadcrumb.Section acitve>Repo1</Breadcrumb.Section>
             </Breadcrumb>
           </Menu.Item>
-
           <Menu.Menu position="right">
             <Button.Group floated="right">
               <Button basic onClick={this.toggleCx.bind(this)}>
@@ -287,23 +284,10 @@ class testmain extends Component {
                 </Icon.Group>
                 {visibleCx.name}
               </Button>
-
-              <Button basic>
-                <Icon.Group>
-                  <Icon name="file" />
-                  <Icon corner name="plus" />
-                </Icon.Group>
-                {' create File'}
-              </Button>
-              <Button basic>
-                <Icon.Group>
-                  <Icon name="folder" />
-                  <Icon corner name="plus" />
-                </Icon.Group>
-                {' create Folder'}
-              </Button>
-              <Button basic content="upload File" icon="upload" />
-              <Button basic content="download" icon="download" />
+              <CreateFileModal />
+              <CreateFolderModal />
+              <UploadFileModal />
+              <DownloadFileModal />
             </Button.Group>
           </Menu.Menu>
         </Menu>
