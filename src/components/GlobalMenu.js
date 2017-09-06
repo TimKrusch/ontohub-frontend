@@ -141,9 +141,6 @@ const GlobalMenu = ({
             </Modal>
           </Button.Group>
         </Input>
-        <Menu.Item>
-          <Button icon="sign in" content="Probe sign in" as={Link} to="/user" />
-        </Menu.Item>
       </Menu.Item>
 
       {(me && <SignedInMenu me={me} onSignOut={onSignOut} />) || (
