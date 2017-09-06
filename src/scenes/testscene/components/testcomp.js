@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
   Sidebar,
@@ -247,7 +248,7 @@ class testmain extends Component {
     const { visibleC } = this.state
     const { visibleCx } = this.state
     return (
-      <div style={{ height: '100vh', background: '#4B4C4D' }}>
+      <div style={{ minHeight: '90vh', background: '#4B4C4D' }}>
         {' '}
         <Menu borderless attached>
           <Button.Group>

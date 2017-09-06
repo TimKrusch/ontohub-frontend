@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import { List, Segment } from 'semantic-ui-react'
 
@@ -5,7 +6,7 @@ export default class Filebrowser extends React.Component {
   render() {
     return (
       <div>
-        <Segment attached style={{ height: '90vh' }}>
+        <Segment attached style={{ height: '80vh' }}>
           <List>
             <List.Item>
               <List.Icon name="folder" />

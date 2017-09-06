@@ -1,3 +1,4 @@
+/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
   Segment,
@@ -6,7 +7,8 @@ import {
   Dropdown,
   DetailsClick,
   EditorClick,
-  HistoryClick
+  HistoryClick,
+  Visibility
 } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { Details } from '.'
@@ -219,7 +221,7 @@ class Content extends Component {
     const { visibleMenu } = this.state
 
     return (
-      <div style={{ display: 'flex' }} ref="content">
+      <div style={{ display: 'flex', minHeight: '80vh' }} ref="content">
         <div style={visibleD} ref="details">
           <Menu attached size="mini">
             <Menu.Item name="details" style={visibleMenu}>
