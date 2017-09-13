@@ -1,4 +1,3 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import { Button, Modal, Icon } from 'semantic-ui-react'
 
@@ -14,7 +13,21 @@ class DownloadFileModal extends Component {
         }
       >
         <Modal.Header>Download a File</Modal.Header>
-        <Modal.Content>You can download a File!</Modal.Content>
+        <Modal.Content>
+          {' '}
+          <div>
+            <p>You can download a File!</p>
+          </div>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button content="Cancel" />
+          <Button
+            positive
+            icon="download"
+            labelPosition="right"
+            content="Download"
+          />
+        </Modal.Actions>
       </Modal>
     )
   }

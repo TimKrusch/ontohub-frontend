@@ -1,4 +1,3 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import {
   Icon,
@@ -17,6 +16,8 @@ import { CreateFolderModal } from '.'
 import { UploadFileModal } from '.'
 import { DownloadFileModal } from '.'
 import styled from 'styled-components'
+
+import FileBrowser from 'react-keyed-file-browser'
 
 const branches = [
   { key: 'master', text: 'master', value: 'master' },
@@ -306,6 +307,7 @@ class testmain extends Component {
     )
   }
 }
+
 export { testmain }
 
 export default testmain

@@ -1,75 +1,86 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import { List, Segment } from 'semantic-ui-react'
 
-export default class Filebrowser extends React.Component {
+import FileBrowser from 'react-keyed-file-browser'
+import 'react-keyed-file-browser/dist/react-keyed-file-browser.css'
+
+{
+  /* 
+
+we used the following query for the test data 
+
+query ($repositoryId: ID!, $revision: ID!) {
+  repository(id: $repositoryId) {
+    name
+    commit(revision: $revision) {
+      lsFiles
+    }
+    owner {
+      displayName
+    }
+  }
+}
+
+
+
+*/
+}
+
+class Filebrowser extends React.Component {
+  constructor(props) {
+    super()
+
+    this.testdata = {
+      data: {
+        repository: {
+          name: 'Fixtures',
+          commit: {
+            lsFiles: [
+              'icons/ontohub.jpg',
+              'icons/ontohub.png',
+              'icons/ontohub.svg',
+              'new_folder/.gitkeep',
+              'pdf/ontohub.pdf',
+              'texts/ontohub.txt',
+              'texts/ontohub_changed.txt',
+              'texts/ontohub_changed_renamed.txt',
+              'texts/ontohub_created.txt',
+              'texts/ontohub_renamed.txt'
+            ]
+          },
+          owner: {
+            displayName: 'Ada Lovelace'
+          }
+        }
+      }
+    }
+
+    this.state = {
+      files: []
+    }
+  }
+
+  setFiledata() {
+    const filedata = this.testdata.data.repository.commit.lsFiles
+    let length = filedata.length
+    const files = []
+
+    for (let i = 0; i < length; i++) {
+      const file = {
+        key: this.testdata.data.repository.name.concat('/', filedata[i])
+      }
+      files.push(file)
+    }
+
+    return files
+  }
+
   render() {
+    const data = this.setFiledata()
     return (
       <div>
         <Segment attached style={{ height: '80vh' }}>
-          <List>
-            <List.Item>
-              <List.Icon name="folder" />
-              <List.Content>
-                <List.Header>Repo1</List.Header>
-                <List.Description>example Repository</List.Description>
-                <List.List>
-                  <List.Item>
-                    <List.Icon name="folder" />
-                    <List.Content>
-                      <List.Header>Folder1</List.Header>
-                    </List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <List.Icon name="folder" />
-                    <List.Content>
-                      <List.Header>Folder2</List.Header>
-                      <List.List>
-                        <List.Item>
-                          <List.Icon name="file text outline" />
-                          <List.Content>
-                            <List.Header>File1.dol</List.Header>
-                            <List.List>
-                              <List.Item>
-                                <List.Icon name="file outline" />
-                                <List.Content>
-                                  <List.Header>oms1</List.Header>
-                                </List.Content>
-                              </List.Item>
-                              <List.Item>
-                                <List.Icon name="file outline" />
-                                <List.Content>
-                                  <List.Header>oms2</List.Header>
-                                </List.Content>
-                              </List.Item>
-                            </List.List>
-                          </List.Content>
-                        </List.Item>
-                        <List.Item>
-                          <List.Icon name="file pdf outline" />
-                          <List.Content>
-                            <List.Header>File2.pdf</List.Header>
-                          </List.Content>
-                        </List.Item>
-                        <List.Item>
-                          <List.Icon name="file text" />
-                          <List.Content>
-                            <List.Header>readme.md</List.Header>
-                          </List.Content>
-                        </List.Item>
-                      </List.List>
-                    </List.Content>
-                  </List.Item>
-                  <List.Item>
-                    <List.Icon name="folder" />
-                    <List.Content>
-                      <List.Header>Folder3</List.Header>
-                    </List.Content>
-                  </List.Item>
-                </List.List>
-              </List.Content>
-            </List.Item>
-          </List>
+          <FileBrowser files={data} />
         </Segment>
       </div>
     )

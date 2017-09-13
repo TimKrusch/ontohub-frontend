@@ -1,6 +1,5 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
-import { Button, Modal, Icon } from 'semantic-ui-react'
+import { Button, Modal, Icon, Form } from 'semantic-ui-react'
 
 class CreateFolderModal extends Component {
   render() {
@@ -12,12 +11,30 @@ class CreateFolderModal extends Component {
               <Icon name="folder" />
               <Icon corner name="plus" />
             </Icon.Group>
-            Create Folder
+            Create File
           </Button>
         }
       >
-        <Modal.Header>Create a Folder</Modal.Header>
-        <Modal.Content>You can create a new Folder!</Modal.Content>
+        <Modal.Header>Create a File</Modal.Header>
+        <Modal.Content>
+          <div>
+            <Form>
+              <Form.Input
+                label="You can create a new Folder! Just type in the Name:"
+                placeholder="Folder-Name"
+              />
+            </Form>
+          </div>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button content="Cancel" />
+          <Button
+            positive
+            icon="checkmark"
+            labelPosition="right"
+            content="Create"
+          />
+        </Modal.Actions>
       </Modal>
     )
   }

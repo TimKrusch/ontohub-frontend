@@ -1,4 +1,4 @@
-/*eslint linebreak-style: ["error", "windows"]*/
+
 import React, { Component } from 'react'
 import { Segment, Menu, Button, Dropdown } from 'semantic-ui-react'
 import styled from 'styled-components'

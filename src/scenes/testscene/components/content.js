@@ -1,10 +1,10 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import { Segment, Menu, Button, Dropdown } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { Details } from '.'
 import { Editor } from '.'
 import { History } from '.'
+import { Route, Link } from 'react-router-dom'
 
 class Content extends Component {
   constructor(props) {
@@ -227,8 +227,7 @@ class Content extends Component {
                 active={'details'}
                 onClick={this.DetailsClick.bind(this)}
               >
-                {' '}
-                Details{' '}
+                Details
               </Button>
             </Menu.Item>
             <Menu.Item name="editor" style={visibleMenu}>
@@ -454,6 +453,7 @@ class Content extends Component {
     )
   }
 }
+
 export { Content }
 
 export default Content
