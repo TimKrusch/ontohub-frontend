@@ -262,7 +262,8 @@ class Content extends Component {
                 active={'details'}
                 onClick={this.DetailsClick.bind(this)}
               >
-                Details
+                {' '}
+                Details{' '}
               </Button>
             </Menu.Item>
             <Menu.Item name="editor" style={visibleMenu}>
