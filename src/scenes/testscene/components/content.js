@@ -4,8 +4,43 @@ import styled from 'styled-components'
 import { Details } from '.'
 import { Editor } from '.'
 import { History } from '.'
-import { Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
+const Content = ({ match }) => (
+  <Router>
+    <div style={{ flex: '8', marginTop: '2px', minHeight: '80vh' }} />
+    <Route path={`${match.url}/Details`} component={Detailcomponent} />
+  </Router>
+)
+
+const Detailcomponent = ({ match }) => (
+  <div>
+    <Menu attached size="mini">
+      <Menu.Item name="details">
+        <Button name="details" as={Link} to={`${match.url}/Details`}>
+          Details
+        </Button>
+        <Button name="1" icon="plus" as={Link} to={`${match.url}+Details`} />
+      </Menu.Item>
+      <Menu.Item name="editor">
+        <Button name="editor" as={Link} to={`${match.url}/Editor`}>
+          Editor{' '}
+        </Button>
+        <Button name="2" icon="plus" as={Link} to={`${match.url}+Editor`} />
+      </Menu.Item>
+      <Menu.Item name="history" as={Link} to={`${match.url}/History`}>
+        <Button name="history">History </Button>
+        <Button name="3" icon="plus" as={Link} to={`${match.url}+History`} />
+      </Menu.Item>
+    </Menu>
+    <Segment attached>
+      <Details />
+    </Segment>
+  </div>
+)
+
+{
+  /*
 class Content extends Component {
   constructor(props) {
     super()
@@ -452,6 +487,8 @@ class Content extends Component {
       </div>
     )
   }
+}
+*/
 }
 
 export { Content }

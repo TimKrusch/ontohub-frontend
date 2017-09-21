@@ -16,13 +16,11 @@ export default [
 
   {
     path: '/test',
-    exact: true,
     main: testmain
   },
 
   {
     path: '/user',
-    exact: true,
     main: usermain
   }
 ]

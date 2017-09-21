@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import { Segment, Menu, Button, Dropdown } from 'semantic-ui-react'
 import styled from 'styled-components'
@@ -106,6 +105,7 @@ class Context extends Component {
                 Git Commit{' '}
               </Button>
             </Menu.Item>
+
             <Menu.Item name="Dropdown" style={visibleDropdown}>
               <Dropdown button placeholder="Prove" basic simple item>
                 <Dropdown.Menu>

@@ -77,13 +77,7 @@ class Filebrowser extends React.Component {
 
   render() {
     const data = this.setFiledata()
-    return (
-      <div>
-        <Segment attached style={{ height: '80vh' }}>
-          <FileBrowser files={data} />
-        </Segment>
-      </div>
-    )
+    return <FileBrowser files={data} />
   }
 }
 export { Filebrowser }
