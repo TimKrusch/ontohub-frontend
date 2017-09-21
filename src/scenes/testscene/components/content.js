@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Segment, Menu, Button, Dropdown } from 'semantic-ui-react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Details } from '.'
 import { Editor } from '.'
 import { History } from '.'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 const Content = ({ match }) => (
   <Router>
