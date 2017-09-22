@@ -47,7 +47,7 @@ const testmain = ({ match }) => (
             content="Filebrowser"
             icon="sitemap"
             as={Link}
-            to={`${match.url}/tree${match.url}`}
+            to={`${match.url}/tree`}
           />
         </Button.Group>
         <Menu.Item content="Branches:" />

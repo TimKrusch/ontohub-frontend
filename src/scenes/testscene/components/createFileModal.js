@@ -1,4 +1,3 @@
-/*eslint linebreak-style: ["error", "windows"]*/
 import React, { Component } from 'react'
 import { Button, Modal, Icon, Form } from 'semantic-ui-react'
 
