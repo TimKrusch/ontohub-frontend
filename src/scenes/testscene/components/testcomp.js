@@ -130,9 +130,111 @@ const WithFileBrowser = ({ match }) => (
   </div>
 )
 
-const Contentcomponent = ({ match }) => (
-  <div>
-    {/* <div>
+const Contentcomponent = ({ match }) => {
+  var pathname = '/Details'
+
+  {
+    /*
+these are the functions to decide the
+path from the menu 
+
+*/
+  }
+
+  function contentpathdecide_detailsplus(contentpath) {
+    if (contentpath == '/Details') {
+      pathname = '/Details'
+      return pathname
+    }
+    if (contentpath == '/Editor') {
+      pathname = '/Details+Editor'
+      return pathname
+    }
+    if (contentpath == '/History') {
+      pathname = '/Details+History'
+      return pathname
+    }
+    if (contentpath == '/Details+History') {
+      pathname = '/Details+History'
+      return pathname
+    }
+    if (contentpath == '/Details+Editor') {
+      pathname = '/Details+Editor'
+      return pathname
+    }
+    if (contentpath == '/Editor+History') {
+      pathname = '/Details+Editor+History'
+      return pathname
+    }
+
+    return contentpath
+  }
+
+  function contentpathdecide_editplus(contentpath) {
+    if (contentpath == '/Details') {
+      pathname = '/Details+Editor'
+      return pathname
+    }
+    if (contentpath == '/Editor') {
+      pathname = '/Editor'
+      return pathname
+    }
+    if (contentpath == '/History') {
+      pathname = '/Editor+History'
+      return pathname
+    }
+    if (contentpath == '/Details+History') {
+      pathname = '/Details+Editor+History}'
+      return pathname
+    }
+    if (contentpath == '/Details+Editor') {
+      pathname = '/Details+Editor'
+      return pathname
+    }
+    if (contentpath == '/Editor+History') {
+      pathname = '/Editor+History'
+      return pathname
+    }
+
+    return contentpath
+  }
+
+  function contentpathdecide_histplus(contentpath) {
+    if (contentpath == '/Details') {
+      pathname = '/Details+History'
+      return pathname
+    }
+    if (contentpath == '/Editor') {
+      pathname = '/Editor+History'
+      return pathname
+    }
+    if (contentpath == '/History') {
+      pathname = '/History'
+      return pathname
+    }
+    if (contentpath == '/Details+History') {
+      pathname = '/Details+History'
+      return pathname
+    }
+    if (contentpath == '/Details+Editor') {
+      pathname = '/Details+Editor+History'
+      return pathname
+    }
+    if (contentpath == '/Editor+History') {
+      pathname = '/Editor+History'
+      return pathname
+    }
+
+    return contentpath
+  }
+  return (
+    <div>
+      {/* 
+      
+      Routes bei denen aber die url nicht korrekt geändert wird
+      
+      
+      <div>
       <Route path={`${match.url}/Details`} component={DetailsMenu} />
       <Route path={`${match.url}/Editor`} component={EditorMenu} />
       <Route path={`${match.url}/History`} component={HistoryMenu} />
@@ -154,58 +256,105 @@ const Contentcomponent = ({ match }) => (
       />
     </div>*/}
 
-    <div style={{ display: 'flex' }}>
-      <Menu attached size="mini">
-        <Menu.Item name="details">
-          <Button name="details" as={Link} to={`${match.url}/Details`}>
-            Details
-          </Button>
-        </Menu.Item>
-        <Menu.Item name="editor">
-          <Button name="editor" as={Link} to={`${match.url}/Editor`}>
-            Editor{' '}
-          </Button>
-          <Button
-            name="2"
-            icon="plus"
-            as={Link}
-            to={`${match.url}/Details+Editor`}
-          />
-        </Menu.Item>
-        <Menu.Item name="history" as={Link} to={`${match.url}/History`}>
-          <Button name="history">History </Button>
-          <Button
-            name="3"
-            icon="plus"
-            as={Link}
-            to={`${match.url}/Details+History`}
-          />
-        </Menu.Item>
-      </Menu>
-    </div>
+      {/*
+      Routes bei denen url korrekt geändert wird, aber funktionsweise nicht korrekt
 
-    <div>
-      <Route path={`${match.url}/Details`} component={Detailsconst} />
-      <Route path={`${match.url}/Editor`} component={Editorconst} />
-      <Route path={`${match.url}/History`} component={Historyconst} />
-      <Route path={`${match.url}/Details+Editor`} component={DetailsEditor} />
-      <Route path={`${match.url}/Details+History`} component={DetailsHistory} />
-      <Route path={`${match.url}/Editor+History`} component={EditorHistory} />
-      <Route
-        path={`${match.url}/Details+Editor+History`}
-        component={DetailsEditorHistory}
-      />
-    </div>
 
-    {/* 
+      <div style={{ display: 'flex' }}>
+        <Menu attached size="mini">
+          <Menu.Item name="details">
+            <Button name="details" as={Link} to={`${match.url}/Details`}>
+              Details
+            </Button>
+          </Menu.Item>
+          <Menu.Item name="editor">
+            <Button name="editor" as={Link} to={`${match.url}/Editor`}>
+              Editor{' '}
+            </Button>
+            <Button
+              name="2"
+              icon="plus"
+              as={Link}
+              to={`${match.url}/Details+Editor`}
+            />
+          </Menu.Item>
+          <Menu.Item name="history" >
+            <Button name="history" as={Link} to={`${match.url}/History`}>History </Button>
+            <Button
+              name="3"
+              icon="plus"
+              as={Link}
+              to={`${match.url}/Details+History`}
+            />
+          </Menu.Item>
+        </Menu>
+      </div>
+*/}
+
+      <div style={{ display: 'flex' }}>
+        <Menu attached size="mini">
+          <Menu.Item name="details">
+            <Button name="details" as={Link} to={`${match.url}/Details`}>
+              Details
+            </Button>
+            <Button
+              name="1"
+              icon="plus"
+              as={Link}
+              to={`${match.url}${contentpathdecide_detailsplus('/Editor')}`}
+            />
+          </Menu.Item>
+          <Menu.Item name="editor">
+            <Button name="editor" as={Link} to={`${match.url}/Editor`}>
+              Editor{' '}
+            </Button>
+            <Button
+              name="2"
+              icon="plus"
+              as={Link}
+              to={`${match.url}${contentpathdecide_editplus(pathname)}`}
+            />
+          </Menu.Item>
+          <Menu.Item name="history">
+            <Button name="history" as={Link} to={`${match.url}/History`}>
+              History{' '}
+            </Button>
+            <Button
+              name="3"
+              icon="plus"
+              as={Link}
+              to={`${match.url}${contentpathdecide_histplus(pathname)}`}
+            />
+          </Menu.Item>
+        </Menu>
+      </div>
+
+      <div>
+        <Route path={`${match.url}/Details`} component={Detailsconst} />
+        <Route path={`${match.url}/Editor`} component={Editorconst} />
+        <Route path={`${match.url}/History`} component={Historyconst} />
+        <Route path={`${match.url}/Details+Editor`} component={DetailsEditor} />
+        <Route
+          path={`${match.url}/Details+History`}
+          component={DetailsHistory}
+        />
+        <Route path={`${match.url}/Editor+History`} component={EditorHistory} />
+        <Route
+          path={`${match.url}/Details+Editor+History`}
+          component={DetailsEditorHistory}
+        />
+      </div>
+
+      {/* 
     <Route path={`${match.url}/:onepanel`} component={OnePanel} />
     <Route path={`${match.url}/:panelleft+:panelright`} component={TwoPanel} />
     <Route
       path={`${match.url}/:panelleft+:panelmid+:panelright`}
       component={ThreePanel}
     />*/}
-  </div>
-)
+    </div>
+  )
+}
 
 {
   /*
@@ -273,49 +422,6 @@ const DetailsEditorHistory = ({ match }) => (
     <History />
   </div>
 )
-
-{
-  /*
-these are the functions to decide the
-path from the menu 
-
-*/
-}
-
-const contentpath = '/Details'
-
-function contentpathdecide_detailsplus(contentpath) {
-  if (contentpath == '/Details') contentpath = '/Details'
-  if (contentpath == '/Editor') contentpath = '/Details+Editor'
-  if (contentpath == '/History') contentpath = '/Details+History'
-  if (contentpath == '/Details+History') contentpath = '/Details+History'
-  if (contentpath == '/Details+Editor') contentpath = '/Details+Editor'
-  if (contentpath == '/Editor+History') contentpath = '/Details+Editor+History'
-
-  return contentpath
-}
-
-function contentpathdecide_editplus(contentpath) {
-  if (contentpath == '/Details') contentpath = '/Details+Editor'
-  if (contentpath == '/Editor') contentpath = '/Editor'
-  if (contentpath == '/History') contentpath = '/Editor+History'
-  if (contentpath == '/Details+History') contentpath = '/Details+Editor+History'
-  if (contentpath == '/Details+Editor') contentpath = '/Details+Editor'
-  if (contentpath == '/Editor+History') contentpath = '/Editor+History'
-
-  return contentpath
-}
-
-function contentpathdecide_histplus(contentpath) {
-  if (contentpath == '/Details') contentpath = '/Details+History'
-  if (contentpath == '/Editor') contentpath = '/Editor+History'
-  if (contentpath == '/History') contentpath = '/History'
-  if (contentpath == '/Details+History') contentpath = '/Details+History'
-  if (contentpath == '/Details+Editor') contentpath = '/Details+Editor+History'
-  if (contentpath == '/Editor+History') contentpath = '/Editor+History'
-
-  return contentpath
-}
 
 {
   /*following const are the specific menus 
