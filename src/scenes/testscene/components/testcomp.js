@@ -57,9 +57,11 @@ const testmain = ({ match }) => (
 
         <Menu.Item>
           <Breadcrumb>
-            <Breadcrumb.Section link>user</Breadcrumb.Section>
+            <Breadcrumb.Section link as={Link} to={`/${match.params.user}`}>
+              {match.params.user}
+            </Breadcrumb.Section>
             <Breadcrumb.Divider />
-            <Breadcrumb.Section acitve>Fixtures</Breadcrumb.Section>
+            <Breadcrumb.Section acitve>{match.params.repo}</Breadcrumb.Section>
           </Breadcrumb>
         </Menu.Item>
         <Menu.Menu position="right">
@@ -143,89 +145,86 @@ path from the menu
 
   function contentpathdecide_detailsplus(contentpath) {
     if (contentpath == '/Details') {
-      pathname = '/Details'
-      return pathname
+      contentpath = '/Details'
+    } else {
+      if (contentpath == '/Editor') {
+        contentpath = '/Details+Editor'
+      } else {
+        if (contentpath == '/History') {
+          contentpath = '/Details+History'
+        } else {
+          if (contentpath == '/Details+History') {
+            contentpath = '/Details+History'
+          } else {
+            if (contentpath == '/Details+Editor') {
+              contentpath = '/Details+Editor'
+            } else {
+              if (contentpath == '/Editor+History') {
+                contentpath = '/Details+Editor+History'
+              }
+            }
+          }
+        }
+      }
     }
-    if (contentpath == '/Editor') {
-      pathname = '/Details+Editor'
-      return pathname
-    }
-    if (contentpath == '/History') {
-      pathname = '/Details+History'
-      return pathname
-    }
-    if (contentpath == '/Details+History') {
-      pathname = '/Details+History'
-      return pathname
-    }
-    if (contentpath == '/Details+Editor') {
-      pathname = '/Details+Editor'
-      return pathname
-    }
-    if (contentpath == '/Editor+History') {
-      pathname = '/Details+Editor+History'
-      return pathname
-    }
-
-    return contentpath
+    pathname = contentpath
+    return pathname
   }
 
   function contentpathdecide_editplus(contentpath) {
     if (contentpath == '/Details') {
-      pathname = '/Details+Editor'
-      return pathname
+      contentpath = '/Details+Editor'
+    } else {
+      if (contentpath == '/Editor') {
+        contentpath = '/Editor'
+      } else {
+        if (contentpath == '/History') {
+          contentpath = '/Editor+History'
+        } else {
+          if (contentpath == '/Details+History') {
+            contentpath = '/Details+Editor+History}'
+          } else {
+            if (contentpath == '/Details+Editor') {
+              contentpath = '/Details+Editor'
+            } else {
+              if (contentpath == '/Editor+History') {
+                contentpath = '/Editor+History'
+              }
+            }
+          }
+        }
+      }
     }
-    if (contentpath == '/Editor') {
-      pathname = '/Editor'
-      return pathname
-    }
-    if (contentpath == '/History') {
-      pathname = '/Editor+History'
-      return pathname
-    }
-    if (contentpath == '/Details+History') {
-      pathname = '/Details+Editor+History}'
-      return pathname
-    }
-    if (contentpath == '/Details+Editor') {
-      pathname = '/Details+Editor'
-      return pathname
-    }
-    if (contentpath == '/Editor+History') {
-      pathname = '/Editor+History'
-      return pathname
-    }
-
-    return contentpath
+    pathname = contentpath
+    return pathname
   }
 
   function contentpathdecide_histplus(contentpath) {
     if (contentpath == '/Details') {
-      pathname = '/Details+History'
-      return pathname
+      contentpath = '/Details+History'
+    } else {
+      if (contentpath == '/Editor') {
+        contentpath = '/Editor+History'
+      } else {
+        if (contentpath == '/History') {
+          contentpath = '/History'
+        } else {
+          if (contentpath == '/Details+History') {
+            contentpath = '/Details+History'
+          } else {
+            if (contentpath == '/Details+Editor') {
+              contentpath = '/Details+Editor+History'
+            } else {
+              if (contentpath == '/Editor+History') {
+                contentpath = '/Editor+History'
+              }
+            }
+          }
+        }
+      }
     }
-    if (contentpath == '/Editor') {
-      pathname = '/Editor+History'
-      return pathname
-    }
-    if (contentpath == '/History') {
-      pathname = '/History'
-      return pathname
-    }
-    if (contentpath == '/Details+History') {
-      pathname = '/Details+History'
-      return pathname
-    }
-    if (contentpath == '/Details+Editor') {
-      pathname = '/Details+Editor+History'
-      return pathname
-    }
-    if (contentpath == '/Editor+History') {
-      pathname = '/Editor+History'
-      return pathname
-    }
-
-    return contentpath
+    pathname = contentpath
+    return pathname
   }
   return (
     <div>
@@ -293,37 +292,34 @@ path from the menu
 
       <div style={{ display: 'flex' }}>
         <Menu attached size="mini">
-          <Menu.Item name="details">
+          <Menu.Item>
             <Button name="details" as={Link} to={`${match.url}/Details`}>
               Details
             </Button>
             <Button
               name="1"
               icon="plus"
-              as={Link}
-              to={`${match.url}${contentpathdecide_detailsplus('/Editor')}`}
+              onClick={contentpathdecide_detailsplus(pathname)}
             />
           </Menu.Item>
-          <Menu.Item name="editor">
+          <Menu.Item>
             <Button name="editor" as={Link} to={`${match.url}/Editor`}>
               Editor{' '}
             </Button>
             <Button
               name="2"
               icon="plus"
-              as={Link}
-              to={`${match.url}${contentpathdecide_editplus(pathname)}`}
+              onClick={contentpathdecide_editplus(pathname)}
             />
           </Menu.Item>
-          <Menu.Item name="history">
+          <Menu.Item>
             <Button name="history" as={Link} to={`${match.url}/History`}>
               History{' '}
             </Button>
             <Button
               name="3"
               icon="plus"
-              as={Link}
-              to={`${match.url}${contentpathdecide_histplus(pathname)}`}
+              onClick={contentpathdecide_histplus(pathname)}
             />
           </Menu.Item>
         </Menu>
@@ -380,11 +376,15 @@ const ThreePanel = ({ match }) => (
 */
 }
 
-const Detailsconst = ({ match }) => (
-  <div style={{ display: 'flex' }}>
-    <Details />
-  </div>
-)
+const Detailsconst = ({ match }) => {
+  Contentcomponent.pathname = '/Details'
+
+  return (
+    <div style={{ display: 'flex' }}>
+      <Details />
+    </div>
+  )
+}
 const Editorconst = ({ match }) => (
   <div style={{ display: 'flex' }}>
     <Editor />

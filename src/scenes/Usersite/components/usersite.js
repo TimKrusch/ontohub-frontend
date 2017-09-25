@@ -1,5 +1,15 @@
 import React, { Component } from 'react'
-import { Segment, Menu, state, handleItemClick, List } from 'semantic-ui-react'
+import {
+  Segment,
+  Button,
+  Menu,
+  state,
+  handleItemClick,
+  List,
+  Container,
+  Tab,
+  Divider
+} from 'semantic-ui-react'
 import {
   BrowserRouter as Router,
   Route,
@@ -8,121 +18,234 @@ import {
   Redirect
 } from 'react-router-dom'
 
-const BasicExample = ({ match }) => (
-  <Router>
+import styled from 'styled-components'
+{
+  /* 
+
+we used the following query for the test data 
+
+query ($organizationalUnitID: ID!) {
+  organizationalUnit(id: $organizationalUnitID) {
+    displayName
+    id
+    repositories {
+      id
+      name
+      description
+      contentType
+    }
+    
+  }
+}
+
+
+query variables
+{"organizationalUnitID":"ada"}
+
+
+
+*/
+}
+
+const Repodiv = styled.div`
+  width: 400px;
+  height: 100px;
+  clear: both;
+  border: 1px solid #aaaaaf;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 20px;
+  background: white;
+`
+const MyRepodiv = styled.div`
+  width: 100%;
+  height: 100px;
+  clear: both;
+  padding: 5px;
+  margin-bottom: 20px;
+  background: white;
+`
+
+const RepoTitle = styled.h4`
+  font-size: 1.2em;
+  text-align: left;
+  color: black;
+`
+const RepoDescription = styled.p`
+  font-size: 1em;
+  text-align: left;
+  color: 2a2a2f;
+  margin-left: 1em;
+`
+
+const usermain = ({ match }) => {
+  {
+    /*we added some more example Repositories*/
+  }
+  const testdata = {
+    data: {
+      organizationalUnit: {
+        displayName: 'Ada Lovelace',
+        id: 'ada',
+        repositories: [
+          {
+            id: 'ada/fixtures',
+            name: 'Fixtures',
+            description: 'This is a fixture repository from the user ada.',
+            contentType: 'specification'
+          },
+          {
+            id: 'ada/ExampleOne',
+            name: 'Example One',
+            description: 'This is a example repository from the user ada.',
+            contentType: 'ontology'
+          },
+
+          {
+            id: 'ada/ExampleTwo',
+            name: 'Example Two',
+            description: 'This is a example repository from the user ada.',
+            contentType: 'model'
+          }
+        ]
+      }
+    }
+  }
+  const MenuTabs = [
+    {
+      menuItem: 'Overview',
+      render: () => (
+        <Tab.Pane attached={false} as={Segment} style={{ height: '100vh' }}>
+          <Overview />
+        </Tab.Pane>
+      )
+    },
+    {
+      menuItem: 'My Repository',
+      render: () => (
+        <Tab.Pane attached={false} as={Segment} style={{ height: '100vh' }}>
+          <MyRepository />
+        </Tab.Pane>
+      )
+    }
+  ]
+
+  const Overview = () => (
     <div>
-      <ul>
-        <li>
-          <Link to={`${match.url}/Clear`}>Clear</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/Left`}>Left</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/Right`}>Right</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/Left+Right`}>Both</Link>
-        </li>
-      </ul>
-
-      <hr />
-
-      <Route path={`${match.url}/Clear`} component={Clear} />
-      <Route path={`${match.url}/Left`} component={Left} />
-      <Route path={`${match.url}/Right`} component={Right} />
-
-      <Route
-        path={`${match.url}/Left+Right`}
-        component={() => (
-          <div style={{ display: 'flex' }}>
-            <Left />
-            <Right />
-          </div>
-        )}
-      />
+      <Repodiv>
+        <RepoTitle>
+          <Link
+            to={`${testdata.data.organizationalUnit.repositories[0]
+              .id}/tree/Details`}
+          >
+            {testdata.data.organizationalUnit.repositories[0].name}
+          </Link>
+        </RepoTitle>
+        <RepoDescription>
+          {testdata.data.organizationalUnit.repositories[0].description}
+        </RepoDescription>
+        <RepoDescription>
+          Content Type: {' '}
+          {testdata.data.organizationalUnit.repositories[0].contentType}
+        </RepoDescription>
+      </Repodiv>
     </div>
+  )
+
+  const MyRepository = () => <div>{createMyRepository()}</div>
+
+  function createMyRepository() {
+    const repo = testdata.data.organizationalUnit.repositories
+    let length = repo.length
+    const files = []
+
+    for (let i = 0; i < length; i++) {
+      const file = (
+        <MyRepodiv>
+          <RepoTitle>
+            {' '}
+            <Link
+              to={`${testdata.data.organizationalUnit.repositories[i]
+                .id}/tree/Details`}
+            >
+              {repo[i].name}
+            </Link>
+          </RepoTitle>
+          <RepoDescription>{repo[i].description}</RepoDescription>
+          <RepoDescription>
+            {' '}
+            Content Type: {repo[i].contentType}
+          </RepoDescription>
+          <Divider />
+        </MyRepodiv>
+      )
+      files.push(file)
+    }
+    return files
+  }
+  return (
+    <div style={{ display: 'flex', height: '100vh', background: '#4B4C4D' }}>
+      <div style={{ flex: '3' }}>
+        <div
+          style={{
+            background: 'white',
+            width: '200px',
+            height: '200px',
+            margin: '50px',
+            marginBottom: '20px',
+            float: 'right',
+            clear: 'both',
+            border: '1px solid #aaaaaf',
+            borderRadius: '5px'
+          }}
+        >
+          <p style={{ padding: '75px' }}>Picture</p>
+        </div>
+        <div
+          style={{
+            background: 'white',
+            width: '200px',
+            marginRight: '50px',
+            float: 'right',
+            clear: 'both',
+            border: '1px solid #aaaaaf',
+            borderRadius: '5px',
+            textAlign: 'center'
+          }}
+        >
+          <h3>{testdata.data.organizationalUnit.displayName}</h3>
+        </div>
+      </div>
+
+      <div
+        style={{
+          flex: '6',
+          marginTop: '50px',
+          float: 'Left'
+        }}
+      >
+        <Tab
+          style={{ marginRight: '400px' }}
+          menu={{
+            pointing: 'true',
+            color: 'white'
+          }}
+          panes={MenuTabs}
+        />
+      </div>
+    </div>
+  )
+}
+
+{
+  /*
+
+const user = ({ match }) => (
+  <Router>
+    <Route path="/:user" component={usermain} />
   </Router>
 )
 
-const Clear = () => (
-  <div>
-    <h2>Clear</h2>
-    <Switch>
-      <Redirect from="/Clear" to="/Left" />
-      <Route path="/Left" component={Left} />
-    </Switch>
-  </div>
-)
-
-const Left = ({ match }) => (
-  <div style={{ background: 'blue', flex: '1' }}>
-    <h2>Left</h2>
-  </div>
-)
-
-const Right = () => (
-  <div style={{ background: 'red', flex: '1' }}>
-    <h2>Right</h2>
-  </div>
-)
-
-export { BasicExample as usermain }
-
-{
-  /*export default class usermain extends Component {
-  state = { activeItem: 'Overview' }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  render() {
-    const { activeItem } = this.state
-
-    return (
-      
-    
-
-    <div>
-         <Menu pointing secondary>
-          <Menu.Item
-            name="Overview"
-            active={activeItem === 'Overview'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="My Repositories"
-            active={activeItem === 'My Repositories'}
-            onClick={this.handleItemClick}
-          />
-        </Menu>
-        <List celled style={{ width: '40%' }}>
-          <List.Item>
-            <List.Content>
-              <List.Header>Repo1</List.Header>
-              first Repo
-            </List.Content>
-          </List.Item>
-          <List.Item>
-            <List.Content>
-              <List.Header>Repo2</List.Header>
-              second Repo
-            </List.Content>
-          </List.Item>
-          <List.Item>
-            <List.Content>
-              <List.Header>Repo3</List.Header>
-              third Repo
-            </List.Content>
-          </List.Item>
-          <List.Item>
-            <List.Content>
-              <List.Header>Repo4</List.Header>
-              fourth Repo
-            </List.Content>
-          </List.Item>
-        </List>
-    </div>)
-   
-  }
-}*/
+*/
 }
+export { usermain }

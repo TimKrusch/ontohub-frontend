@@ -24,13 +24,13 @@ class CreateFolderModal extends Component {
               <Icon name="folder" />
               <Icon corner name="plus" />
             </Icon.Group>
-            Create File
+            Create Folder
           </Button>
         }
         open={this.state.modalOpen}
         onClose={this.handleClose.bind(this)}
       >
-        <Modal.Header>Create a File</Modal.Header>
+        <Modal.Header>Create a Folder</Modal.Header>
         <Modal.Content>
           <div>
             <Form>

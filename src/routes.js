@@ -13,14 +13,13 @@ export default [
     path: '/home',
     exact: true
   },
-
   {
-    path: '/test',
+    path: '/:user/:repo',
     main: testmain
   },
 
   {
-    path: '/user',
+    path: '/:user',
     main: usermain
   }
 ]
