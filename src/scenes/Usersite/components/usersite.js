@@ -225,7 +225,7 @@ const usermain = ({ match }) => {
         }}
       >
         <Tab
-          style={{ marginRight: '400px' }}
+          style={{}}
           menu={{
             pointing: 'true',
             color: 'white'
@@ -233,6 +233,7 @@ const usermain = ({ match }) => {
           panes={MenuTabs}
         />
       </div>
+      <div style={{ flex: '1' }} />
     </div>
   )
 }

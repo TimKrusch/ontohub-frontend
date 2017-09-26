@@ -82,7 +82,6 @@ const testmain = ({ match }) => (
       </Menu>
       <div>
         <Route path={`${match.url}/tree`} component={WithFileBrowser} />
-        <Route path={`${match.url}`} component={WithOutFileBrowser} />
       </div>
     </div>
   </Router>
@@ -340,14 +339,6 @@ path from the menu
           component={DetailsEditorHistory}
         />
       </div>
-
-      {/* 
-    <Route path={`${match.url}/:onepanel`} component={OnePanel} />
-    <Route path={`${match.url}/:panelleft+:panelright`} component={TwoPanel} />
-    <Route
-      path={`${match.url}/:panelleft+:panelmid+:panelright`}
-      component={ThreePanel}
-    />*/}
     </div>
   )
 }
@@ -425,8 +416,9 @@ const DetailsEditorHistory = ({ match }) => (
 
 {
   /*following const are the specific menus 
-for all combinations*/
-}
+for all combinations
+
+
 const DetailsMenu = ({ match }) => (
   <div style={{ display: 'flex' }}>
     <Menu attached size="mini">
@@ -631,7 +623,8 @@ const DetailsEditorHistoryMenu = ({ match }) => (
     </Menu>
   </div>
 )
-
+*/
+}
 {
   /*class testmain extends Component {
   constructor(props) {
