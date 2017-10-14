@@ -12,7 +12,10 @@ import {
 import { Details } from '.'
 import { Editor } from '.'
 import { History } from '.'
-import { Context } from '.'
+
+import { Prove } from '.'
+import { Translation } from '.'
+import { GitCommit } from '.'
 import { Filebrowser } from '.'
 import { CreateFileModal } from '.'
 import { CreateFolderModal } from '.'
@@ -23,11 +26,13 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Redirect
+  Redirect,
+  Switch
 } from 'react-router-dom'
 
 {
-  /*import { Content } from '.'*/
+  /*import { Content } from '.'
+  import { Context } from '.'*/
 }
 
 const branches = [
@@ -35,6 +40,10 @@ const branches = [
   { key: 'branch_test1', text: 'branch_test1', value: 'branch_test1' },
   { key: 'branch_test2', text: 'branch_test2', value: 'branch_test2' }
 ]
+
+{
+  /*
+
 
 const testmain = ({ match }) => (
   <Router>
@@ -61,7 +70,7 @@ const testmain = ({ match }) => (
               {match.params.user}
             </Breadcrumb.Section>
             <Breadcrumb.Divider />
-            <Breadcrumb.Section acitve>{match.params.repo}</Breadcrumb.Section>
+            <Breadcrumb.Section active>{match.params.repo}</Breadcrumb.Section>
           </Breadcrumb>
         </Menu.Item>
         <Menu.Menu position="right">
@@ -103,7 +112,7 @@ const WithFileBrowser = ({ match }) => (
         <Filebrowser />
       </Segment>
     </div>
-    {/*
+    /*
     <div style={{ flex: '8', marginTop: '2px', minHeight: '80vh' }}>
       <Route path={`${match.url}/Details`} component={DetailsMenu} />
       <Route path={`${match.url}/Editor`} component={EditorMenu} />
@@ -124,7 +133,9 @@ const WithFileBrowser = ({ match }) => (
         path={`${match.url}/Details+Editor+History`}
         component={DetailsEditorHistoryMenu}
       /></div>
-*/}
+    
+    
+      *
 
     <div style={{ flex: '8', marginTop: '2px', minHeight: '80vh' }}>
       <Route path={`${match.url}`} component={Contentcomponent} />
@@ -140,8 +151,7 @@ const Contentcomponent = ({ match }) => {
 these are the functions to decide the
 path from the menu 
 
-*/
-  }
+*
 
   function contentpathdecide_detailsplus(contentpath) {
     if (contentpath == '/Details') {
@@ -253,9 +263,11 @@ path from the menu
         path={`${match.url}/Details+Editor+History`}
         component={DetailsEditorHistoryMenu}
       />
-    </div>*/}
+    </div>*/
+}
 
-      {/*
+{
+  /*
       Routes bei denen url korrekt geändert wird, aber funktionsweise nicht korrekt
 
 
@@ -288,7 +300,7 @@ path from the menu
           </Menu.Item>
         </Menu>
       </div>
-*/}
+*
 
       <div style={{ display: 'flex' }}>
         <Menu attached size="mini">
@@ -347,7 +359,7 @@ path from the menu
     <Route
       path={`${match.url}/:panelleft+:panelmid+:panelright`}
       component={ThreePanel}
-    />*/}
+    />*
     </div>
   )
 }
@@ -373,8 +385,7 @@ const ThreePanel = ({ match }) => (
     <History />
   </div>
 )
-*/
-}
+*
 
 const Detailsconst = ({ match }) => {
   Contentcomponent.pathname = '/Details'
@@ -425,8 +436,7 @@ const DetailsEditorHistory = ({ match }) => (
 
 {
   /*following const are the specific menus 
-for all combinations*/
-}
+for all combinations*
 const DetailsMenu = ({ match }) => (
   <div style={{ display: 'flex' }}>
     <Menu attached size="mini">
@@ -632,11 +642,444 @@ const DetailsEditorHistoryMenu = ({ match }) => (
   </div>
 )
 
-{
-  /*class testmain extends Component {
+*/
+}
+
+const testmain = ({ match }) => {
+  console.log(match)
+  return (
+    <Router>
+      <Route path={`${match.url}`} component={test} />
+    </Router>
+  )
+}
+
+const Content = ({ match }) => {
+  console.log(match)
+  return (
+    <div
+      style={{
+        display: 'inline',
+        flex: '8',
+        marginTop: '2px'
+      }}
+    >
+      <div style={{ flex: '8', minHeight: '80vh' }}>
+        {match.params.Content == 'Details' ? (
+          <div>
+            <Menu attached size="mini">
+              <Menu.Item name="details">
+                <Button
+                  name="details"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                >
+                  Details
+                </Button>
+              </Menu.Item>
+              <Menu.Item name="editor">
+                <Button
+                  name="editor"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                >
+                  Editor{' '}
+                </Button>
+                <Button
+                  icon="plus"
+                  as={Link}
+                  to={`${(match.params.Content =
+                    'Filebrowser+Details+Editor')}`}
+                />
+              </Menu.Item>
+              <Menu.Item name="history">
+                <Button
+                  name="history"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                >
+                  History{' '}
+                </Button>
+                <Button
+                  icon="plus"
+                  as={Link}
+                  to={`${(match.params.Content =
+                    'Filebrowser+Details+History')}`}
+                />
+              </Menu.Item>
+            </Menu>
+            <div style={{ display: 'flex' }}>
+              <Details />
+            </div>
+          </div>
+        ) : match.params.Content == 'Editor' ? (
+          <div>
+            <Menu attached size="mini">
+              <Menu.Item name="details">
+                <Button
+                  name="details"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                >
+                  Details
+                </Button>
+                <Button
+                  icon="plus"
+                  as={Link}
+                  to={`${(match.params.Content =
+                    'Filebrowser+Details+Editor')}`}
+                />
+              </Menu.Item>
+              <Menu.Item name="editor">
+                <Button
+                  name="editor"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                >
+                  Editor{' '}
+                </Button>
+              </Menu.Item>
+              <Menu.Item name="history">
+                <Button
+                  name="history"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                >
+                  History{' '}
+                </Button>
+                <Button
+                  icon="plus"
+                  as={Link}
+                  to={`${(match.params.Content =
+                    'Filebrowser+Editor+History')}`}
+                />
+              </Menu.Item>
+            </Menu>
+            <div style={{ display: 'flex' }}>
+              <Editor />
+            </div>
+          </div>
+        ) : match.params.Content == 'History' ? (
+          <div>
+            <Menu attached size="mini">
+              <Menu.Item name="details">
+                <Button
+                  name="details"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                >
+                  Details
+                </Button>
+                <Button
+                  icon="plus"
+                  as={Link}
+                  to={`${(match.params.Content =
+                    'Filebrowser+Details+History')}`}
+                />
+              </Menu.Item>
+              <Menu.Item name="editor">
+                <Button
+                  name="editor"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                >
+                  Editor{' '}
+                </Button>
+                <Button
+                  icon="plus"
+                  as={Link}
+                  to={`${(match.params.Content =
+                    'Filebrowser+Editor+History')}`}
+                />
+              </Menu.Item>
+              <Menu.Item name="history">
+                <Button
+                  name="history"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                >
+                  History{' '}
+                </Button>
+              </Menu.Item>
+            </Menu>
+            <div style={{ display: 'flex' }}>
+              <History />
+            </div>
+          </div>
+        ) : match.params.Content == 'Details+Editor' ? (
+          <div>
+            <Menu attached size="mini">
+              <Menu.Item name="details">
+                <Button
+                  name="details"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                >
+                  Details
+                </Button>
+              </Menu.Item>
+              <Menu.Item name="editor">
+                <Button
+                  name="editor"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                >
+                  Editor{' '}
+                </Button>
+              </Menu.Item>
+              <Menu.Item name="history">
+                <Button
+                  name="history"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                >
+                  History{' '}
+                </Button>
+                <Button
+                  icon="plus"
+                  as={Link}
+                  to={`${(match.params.Content =
+                    'Filebrowser+Details+Editor+History')}`}
+                />
+              </Menu.Item>
+            </Menu>
+            <div style={{ display: 'flex' }}>
+              <Details />
+              <Editor />
+            </div>
+          </div>
+        ) : match.params.Content == 'Details+History' ? (
+          <div>
+            <Menu attached size="mini">
+              <Menu.Item name="details">
+                <Button
+                  name="details"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                >
+                  Details
+                </Button>
+              </Menu.Item>
+              <Menu.Item name="editor">
+                <Button
+                  name="editor"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                >
+                  Editor{' '}
+                </Button>
+                <Button
+                  icon="plus"
+                  as={Link}
+                  to={`${(match.params.Content =
+                    'Filebrowser+Details+Editor+History')}`}
+                />
+              </Menu.Item>
+              <Menu.Item name="history">
+                <Button
+                  name="history"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                >
+                  History{' '}
+                </Button>
+              </Menu.Item>
+            </Menu>
+            <div style={{ display: 'flex' }}>
+              <Details />
+              <History />
+            </div>
+          </div>
+        ) : match.params.Content == 'Editor+History' ? (
+          <div>
+            <Menu attached size="mini">
+              <Menu.Item name="details">
+                <Button
+                  name="details"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                >
+                  Details
+                </Button>
+                <Button icon="plus" />
+              </Menu.Item>
+              <Menu.Item name="editor">
+                <Button
+                  name="editor"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                >
+                  Editor{' '}
+                </Button>
+              </Menu.Item>
+              <Menu.Item name="history">
+                <Button
+                  name="history"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                >
+                  History{' '}
+                </Button>
+              </Menu.Item>
+            </Menu>
+            <div style={{ display: 'flex' }}>
+              <Editor />
+              <History />
+            </div>
+          </div>
+        ) : match.params.Content == 'Details+Editor+History' ? (
+          <div>
+            <Menu attached size="mini">
+              <Menu.Item name="details">
+                <Button
+                  name="details"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                >
+                  Details
+                </Button>
+              </Menu.Item>
+              <Menu.Item name="editor">
+                <Button
+                  name="editor"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                >
+                  Editor{' '}
+                </Button>
+              </Menu.Item>
+              <Menu.Item name="history">
+                <Button
+                  name="history"
+                  as={Link}
+                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                >
+                  History{' '}
+                </Button>
+              </Menu.Item>
+            </Menu>
+            <div style={{ display: 'flex' }}>
+              <Details />
+              <Editor />
+              <History />
+            </div>
+          </div>
+        ) : (
+          <div />
+        )}
+      </div>
+    </div>
+  )
+}
+
+const Context = ({ match }) => {
+  console.log(match)
+  return <div style={{ display: 'flex' }} />
+}
+
+const onlyCnt = ({ match }) => {
+  console.log(match)
+
+  return (
+    <div style={{ display: 'flex' }}>
+      <div
+        style={{
+          display: 'inline',
+          flex: '5',
+          marginTop: '2px'
+        }}
+      >
+        <Content match={match} />
+      </div>
+    </div>
+  )
+}
+
+const withFb = ({ match }) => {
+  console.log(match)
+  return (
+    <div style={{ display: 'flex', minHeight: '80vh' }}>
+      <div
+        style={{
+          display: 'inline',
+          flex: '2',
+          marginRight: '4px',
+          marginTop: '2px',
+          minHeight: '80vh'
+        }}
+      >
+        <Segment attached>
+          <Filebrowser />
+        </Segment>
+      </div>
+      <Content match={match} />
+    </div>
+  )
+}
+const withCx = ({ match }) => {
+  console.log(match)
+  return (
+    <div style={{ display: 'flex' }}>
+      <Content match={match} />
+      <div
+        style={{
+          display: 'inline',
+          flex: '7',
+          name: 'close Context',
+          icon1: 'window close outline',
+          icon2: 'null',
+          marginLeft: '4px',
+          marginTop: '2px'
+        }}
+      >
+        <Context />
+      </div>
+    </div>
+  )
+}
+
+const withFbCx = ({ match }) => {
+  console.log(match)
+
+  return (
+    <div style={{ display: 'flex' }}>
+      <div
+        style={{
+          display: 'inline',
+          flex: '3',
+          marginRight: '4px',
+          marginTop: '2px',
+          minHeight: '80vh'
+        }}
+      >
+        <Segment attached>
+          <Filebrowser />
+        </Segment>
+      </div>
+      <Content match={match} />
+      <div
+        style={{
+          display: 'inline',
+          flex: '7',
+          name: 'close Context',
+          icon1: 'window close outline',
+          icon2: 'null',
+          marginLeft: '4px',
+          marginTop: '2px'
+        }}
+      >
+        <Context />
+      </div>
+    </div>
+  )
+}
+
+class test extends Component {
   constructor(props) {
     super()
+
     this.state = {
+      path: props.match.path,
       isFBvisible: 1,
       isCxvisible: 0,
       visibleFB: {
@@ -854,6 +1297,13 @@ const DetailsEditorHistoryMenu = ({ match }) => (
     const { visibleFB } = this.state
     const { visibleC } = this.state
     const { visibleCx } = this.state
+
+    console.log(this)
+    console.log(
+      this.props.location.pathname
+        .replace(`${this.props.match.url}/`, '')
+        .charAt(0)
+    )
     return (
       <div style={{ minHeight: '90vh', background: '#4B4C4D' }}>
         {' '}
@@ -861,8 +1311,19 @@ const DetailsEditorHistoryMenu = ({ match }) => (
           <Button.Group>
             <Button
               basic
-              onClick={this.toggleFB.bind(this)}
               content="Filebrowser"
+              as={Link}
+              to={
+                this.props.location.pathname
+                  .replace(`${this.props.match.url}/`, '')
+                  .charAt(0) == 'F'
+                  ? this.props.location.pathname.replace('Filebrowser+', '')
+                  : `${this.props.match
+                      .url}/Filebrowser+${this.props.location.pathname.replace(
+                      `${this.props.match.url}/`,
+                      ''
+                    )}`
+              }
               icon="sitemap"
             />
           </Button.Group>
@@ -879,10 +1340,24 @@ const DetailsEditorHistoryMenu = ({ match }) => (
 
           <Menu.Item>
             <Breadcrumb>
+              <Breadcrumb.Section
+                link
+                as={Link}
+                to={`/${this.props.match.params.user}`}
+              >
+                {this.props.match.params.user}
+              </Breadcrumb.Section>
+              <Breadcrumb.Divider />
+              <Breadcrumb.Section active>
+                {this.props.match.params.repo}
+              </Breadcrumb.Section>
+            </Breadcrumb>
+
+            {/*<Breadcrumb>
               <Breadcrumb.Section link>user</Breadcrumb.Section>
               <Breadcrumb.Divider />
               <Breadcrumb.Section acitve>Fixtures</Breadcrumb.Section>
-            </Breadcrumb>
+            </Breadcrumb>*/}
           </Menu.Item>
           <Menu.Menu position="right">
             <Button.Group floated="right">
@@ -900,21 +1375,27 @@ const DetailsEditorHistoryMenu = ({ match }) => (
             </Button.Group>
           </Menu.Menu>
         </Menu>
-        <div style={{ display: 'flex' }}>
-          <div style={visibleFB}>
-            <Filebrowser />
-          </div>
-          <div style={visibleC}>
-            <Content />
-          </div>
-          <div style={visibleCx}>
-            <Context />
-          </div>
-        </div>
+        <Switch>
+          <Route
+            path={`${this.props.match.url}/Filebrowser+:Content///:Context`}
+            component={withFbCx}
+          />
+          <Route
+            path={`${this.props.match.url}/Filebrowser+:Content`}
+            component={withFb}
+          />
+          <Route
+            path={`${this.props.match.url}/:Content///:Context`}
+            component={withCx}
+          />
+          <Route
+            path={`${this.props.match.url}/:Content`}
+            component={onlyCnt}
+          />
+        </Switch>
       </div>
     )
   }
-}*/
 }
 
 export { testmain }

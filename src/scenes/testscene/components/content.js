@@ -6,6 +6,8 @@ import { Details } from '.'
 import { Editor } from '.'
 import { History } from '.'
 
+{
+  /*
 const Content = ({ match }) => (
   <Router>
     <div style={{ flex: '8', marginTop: '2px', minHeight: '80vh' }} />
@@ -37,13 +39,23 @@ const Detailcomponent = ({ match }) => (
       <Details />
     </Segment>
   </div>
-)
+)*/
+}
 
-{
-  /*
+/*
+const Content = ({ match }) => {
+  console.log(match)
+  return (
+    <Router>
+      <test />
+    </Router>
+  )
+}*/
+
 class Content extends Component {
   constructor(props) {
     super()
+
     this.state = {
       isDvisible: true,
       isEvisible: false,
@@ -251,7 +263,7 @@ class Content extends Component {
     const { visibleH } = this.state
     const { visibleDropdown } = this.state
     const { visibleMenu } = this.state
-
+    console.log(this)
     return (
       <div style={{ display: 'flex', minHeight: '80vh' }} ref="content">
         <div style={visibleD} ref="details">
@@ -488,8 +500,6 @@ class Content extends Component {
       </div>
     )
   }
-}
-*/
 }
 
 export { Content }
