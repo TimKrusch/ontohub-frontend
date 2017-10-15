@@ -646,7 +646,6 @@ const DetailsEditorHistoryMenu = ({ match }) => (
 }
 
 const testmain = ({ match }) => {
-  console.log(match)
   return (
     <Router>
       <Route path={`${match.url}`} component={test} />
@@ -656,6 +655,7 @@ const testmain = ({ match }) => {
 
 const Content = ({ match }) => {
   console.log(match)
+
   return (
     <div
       style={{
@@ -672,7 +672,9 @@ const Content = ({ match }) => {
                 <Button
                   name="details"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Details
                 </Button>
@@ -681,30 +683,36 @@ const Content = ({ match }) => {
                 <Button
                   name="editor"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Editor')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Editor{' '}
                 </Button>
                 <Button
                   icon="plus"
                   as={Link}
-                  to={`${(match.params.Content =
-                    'Filebrowser+Details+Editor')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details+Editor')
+                    .replace(':Context', match.params.Context)}`}
                 />
               </Menu.Item>
               <Menu.Item name="history">
                 <Button
                   name="history"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'History')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   History{' '}
                 </Button>
                 <Button
                   icon="plus"
                   as={Link}
-                  to={`${(match.params.Content =
-                    'Filebrowser+Details+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details+History')
+                    .replace(':Context', match.params.Context)}`}
                 />
               </Menu.Item>
             </Menu>
@@ -719,22 +727,27 @@ const Content = ({ match }) => {
                 <Button
                   name="details"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Details
                 </Button>
                 <Button
                   icon="plus"
                   as={Link}
-                  to={`${(match.params.Content =
-                    'Filebrowser+Details+Editor')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details+Editor')
+                    .replace(':Context', match.params.Context)}`}
                 />
               </Menu.Item>
               <Menu.Item name="editor">
                 <Button
                   name="editor"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details+Editor')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Editor{' '}
                 </Button>
@@ -743,15 +756,18 @@ const Content = ({ match }) => {
                 <Button
                   name="history"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'History')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   History{' '}
                 </Button>
                 <Button
                   icon="plus"
                   as={Link}
-                  to={`${(match.params.Content =
-                    'Filebrowser+Editor+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Editor+History')
+                    .replace(':Context', match.params.Context)}`}
                 />
               </Menu.Item>
             </Menu>
@@ -766,37 +782,45 @@ const Content = ({ match }) => {
                 <Button
                   name="details"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Details
                 </Button>
                 <Button
                   icon="plus"
                   as={Link}
-                  to={`${(match.params.Content =
-                    'Filebrowser+Details+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details+History')
+                    .replace(':Context', match.params.Context)}`}
                 />
               </Menu.Item>
               <Menu.Item name="editor">
                 <Button
                   name="editor"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Editor')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Editor{' '}
                 </Button>
                 <Button
                   icon="plus"
                   as={Link}
-                  to={`${(match.params.Content =
-                    'Filebrowser+Editor+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Editor+History')
+                    .replace(':Context', match.params.Context)}`}
                 />
               </Menu.Item>
               <Menu.Item name="history">
                 <Button
                   name="history"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'History')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   History{' '}
                 </Button>
@@ -813,7 +837,9 @@ const Content = ({ match }) => {
                 <Button
                   name="details"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Details
                 </Button>
@@ -822,7 +848,9 @@ const Content = ({ match }) => {
                 <Button
                   name="editor"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Editor')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Editor{' '}
                 </Button>
@@ -831,15 +859,18 @@ const Content = ({ match }) => {
                 <Button
                   name="history"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'History')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   History{' '}
                 </Button>
                 <Button
                   icon="plus"
                   as={Link}
-                  to={`${(match.params.Content =
-                    'Filebrowser+Details+Editor+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details+Editor+History')
+                    .replace(':Context', match.params.Context)}`}
                 />
               </Menu.Item>
             </Menu>
@@ -855,7 +886,9 @@ const Content = ({ match }) => {
                 <Button
                   name="details"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Details
                 </Button>
@@ -864,22 +897,27 @@ const Content = ({ match }) => {
                 <Button
                   name="editor"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Editor')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Editor{' '}
                 </Button>
                 <Button
                   icon="plus"
                   as={Link}
-                  to={`${(match.params.Content =
-                    'Filebrowser+Details+Editor+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details+Editor+History')
+                    .replace(':Context', match.params.Context)}`}
                 />
               </Menu.Item>
               <Menu.Item name="history">
                 <Button
                   name="history"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'History')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   History{' '}
                 </Button>
@@ -897,17 +935,27 @@ const Content = ({ match }) => {
                 <Button
                   name="details"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Details
                 </Button>
-                <Button icon="plus" />
+                <Button
+                  icon="plus"
+                  as={Link}
+                  to={`${match.path
+                    .replace(':Content', 'Details+Editor+History')
+                    .replace(':Context', match.params.Context)}`}
+                />
               </Menu.Item>
               <Menu.Item name="editor">
                 <Button
                   name="editor"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Editor')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Editor{' '}
                 </Button>
@@ -916,7 +964,9 @@ const Content = ({ match }) => {
                 <Button
                   name="history"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'History')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   History{' '}
                 </Button>
@@ -934,7 +984,9 @@ const Content = ({ match }) => {
                 <Button
                   name="details"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Details')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Details')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Details
                 </Button>
@@ -943,7 +995,9 @@ const Content = ({ match }) => {
                 <Button
                   name="editor"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+Editor')}`}
+                  to={`${match.path
+                    .replace(':Content', 'Editor')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   Editor{' '}
                 </Button>
@@ -952,7 +1006,9 @@ const Content = ({ match }) => {
                 <Button
                   name="history"
                   as={Link}
-                  to={`${(match.params.Content = 'Filebrowser+History')}`}
+                  to={`${match.path
+                    .replace(':Content', 'History')
+                    .replace(':Context', match.params.Context)}`}
                 >
                   History{' '}
                 </Button>
@@ -973,13 +1029,143 @@ const Content = ({ match }) => {
 }
 
 const Context = ({ match }) => {
-  console.log(match)
-  return <div style={{ display: 'flex' }} />
+  return (
+    <div
+      style={{
+        display: 'inline',
+        flex: '7',
+        name: 'close Context',
+        icon1: 'window close outline',
+        icon2: 'null',
+        marginLeft: '4px',
+        marginTop: '2px'
+      }}
+    >
+      {match.params.Context == 'prove' ? (
+        <div>
+          <Menu attached size="mini">
+            <Menu.Item>
+              <Button
+                name="prove"
+                active
+                content="Prove"
+                as={Link}
+                to={`${match.path
+                  .replace(':Content', match.params.Content)
+                  .replace(':Context', 'prove')}`}
+              />
+            </Menu.Item>
+            <Menu.Item>
+              <Button
+                name="translation"
+                content="Translation"
+                as={Link}
+                to={`${match.path
+                  .replace(':Content', match.params.Content)
+                  .replace(':Context', 'translation')}`}
+              />
+            </Menu.Item>
+            <Menu.Item>
+              <Button
+                name="gitcommit"
+                content="Git Commit"
+                as={Link}
+                to={`${match.path
+                  .replace(':Content', match.params.Content)
+                  .replace(':Context', 'git')}`}
+              />
+            </Menu.Item>
+          </Menu>
+          <div>
+            <Prove />
+          </div>
+        </div>
+      ) : match.params.Context == 'git' ? (
+        <div>
+          <Menu attached size="mini">
+            <Menu.Item>
+              <Button
+                name="prove"
+                content="Prove"
+                as={Link}
+                to={`${match.path
+                  .replace(':Content', match.params.Content)
+                  .replace(':Context', 'prove')}`}
+              />
+            </Menu.Item>
+            <Menu.Item>
+              <Button
+                name="translation"
+                content="Translation"
+                as={Link}
+                to={`${match.path
+                  .replace(':Content', match.params.Content)
+                  .replace(':Context', 'translation')}`}
+              />
+            </Menu.Item>
+            <Menu.Item>
+              <Button
+                name="gitcommit"
+                active
+                content="Git Commit"
+                as={Link}
+                to={`${match.path
+                  .replace(':Content', match.params.Content)
+                  .replace(':Context', 'git')}`}
+              />
+            </Menu.Item>
+          </Menu>
+          <div>
+            <GitCommit />
+          </div>
+        </div>
+      ) : match.params.Context == 'translation' ? (
+        <div>
+          <Menu attached size="mini">
+            <Menu.Item>
+              <Button
+                name="prove"
+                content="Prove"
+                as={Link}
+                to={`${match.path
+                  .replace(':Content', match.params.Content)
+                  .replace(':Context', 'prove')}`}
+              />
+            </Menu.Item>
+            <Menu.Item>
+              <Button
+                name="translation"
+                active
+                content="Translation"
+                as={Link}
+                to={`${match.path
+                  .replace(':Content', match.params.Content)
+                  .replace(':Context', 'translation')}`}
+              />
+            </Menu.Item>
+            <Menu.Item>
+              <Button
+                name="gitcommit"
+                content="Git Commit"
+                as={Link}
+                to={`${match.path
+                  .replace(':Content', match.params.Content)
+                  .replace(':Context', 'git')}`}
+              />
+            </Menu.Item>
+          </Menu>
+          <div>
+            <Translation />
+          </div>
+        </div>
+      ) : (
+        <div />
+      )}
+    </div>
+  )
 }
 
 const onlyCnt = ({ match }) => {
-  console.log(match)
-
   return (
     <div style={{ display: 'flex' }}>
       <div
@@ -998,7 +1184,7 @@ const onlyCnt = ({ match }) => {
 const withFb = ({ match }) => {
   console.log(match)
   return (
-    <div style={{ display: 'flex', minHeight: '80vh' }}>
+    <div style={{ display: 'flex' }}>
       <div
         style={{
           display: 'inline',
@@ -1008,7 +1194,12 @@ const withFb = ({ match }) => {
           minHeight: '80vh'
         }}
       >
-        <Segment attached>
+        <Segment
+          attached
+          style={{
+            minHeight: '80vh'
+          }}
+        >
           <Filebrowser />
         </Segment>
       </div>
@@ -1017,23 +1208,11 @@ const withFb = ({ match }) => {
   )
 }
 const withCx = ({ match }) => {
-  console.log(match)
   return (
     <div style={{ display: 'flex' }}>
       <Content match={match} />
-      <div
-        style={{
-          display: 'inline',
-          flex: '7',
-          name: 'close Context',
-          icon1: 'window close outline',
-          icon2: 'null',
-          marginLeft: '4px',
-          marginTop: '2px'
-        }}
-      >
-        <Context />
-      </div>
+
+      <Context match={match} />
     </div>
   )
 }
@@ -1052,24 +1231,18 @@ const withFbCx = ({ match }) => {
           minHeight: '80vh'
         }}
       >
-        <Segment attached>
+        <Segment
+          attached
+          style={{
+            minHeight: '80vh'
+          }}
+        >
           <Filebrowser />
         </Segment>
       </div>
       <Content match={match} />
-      <div
-        style={{
-          display: 'inline',
-          flex: '7',
-          name: 'close Context',
-          icon1: 'window close outline',
-          icon2: 'null',
-          marginLeft: '4px',
-          marginTop: '2px'
-        }}
-      >
-        <Context />
-      </div>
+
+      <Context match={match} />
     </div>
   )
 }
@@ -1299,11 +1472,6 @@ class test extends Component {
     const { visibleCx } = this.state
 
     console.log(this)
-    console.log(
-      this.props.location.pathname
-        .replace(`${this.props.match.url}/`, '')
-        .charAt(0)
-    )
     return (
       <div style={{ minHeight: '90vh', background: '#4B4C4D' }}>
         {' '}
@@ -1361,12 +1529,60 @@ class test extends Component {
           </Menu.Item>
           <Menu.Menu position="right">
             <Button.Group floated="right">
-              <Button basic onClick={this.toggleCx.bind(this)}>
+              <Button
+                basic
+                as={Link}
+                to={
+                  this.props.location.pathname.search('///git') == -1
+                    ? this.props.location.pathname.search('///prove') == -1
+                      ? this.props.location.pathname.search('///translation') ==
+                        -1
+                        ? `${this.props.location.pathname}///prove`
+                        : this.props.location.pathname.replace(
+                            '///translation',
+                            ''
+                          )
+                      : this.props.location.pathname.replace('///prove', '')
+                    : this.props.location.pathname.replace('///git', '')
+                }
+              >
                 <Icon.Group>
-                  <Icon name={visibleCx.icon1} />
-                  <Icon corner name={visibleCx.icon2} />
+                  <Icon
+                    name={
+                      this.props.location.pathname.search('///git') == -1
+                        ? this.props.location.pathname.search('///prove') == -1
+                          ? this.props.location.pathname.search(
+                              '///translation'
+                            ) == -1
+                            ? 'window restore'
+                            : 'window close outline'
+                          : 'window close outline'
+                        : 'window close outline'
+                    }
+                  />
+                  <Icon
+                    corner
+                    name={
+                      this.props.location.pathname.search('///git') == -1
+                        ? this.props.location.pathname.search('///prove') == -1
+                          ? this.props.location.pathname.search(
+                              '///translation'
+                            ) == -1
+                            ? 'plus'
+                            : 'null'
+                          : 'null'
+                        : 'null'
+                    }
+                  />
                 </Icon.Group>
-                {visibleCx.name}
+                {this.props.location.pathname.search('///git') == -1
+                  ? this.props.location.pathname.search('///prove') == -1
+                    ? this.props.location.pathname.search('///translation') ==
+                      -1
+                      ? 'add Context'
+                      : 'close Context'
+                    : 'close Context'
+                  : 'close Context'}
               </Button>
               <CreateFileModal />
               <CreateFolderModal />
