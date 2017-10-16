@@ -121,10 +121,10 @@ const usermain = ({ match }) => {
       )
     },
     {
-      menuItem: 'My Repository',
+      menuItem: 'My Repositories',
       render: () => (
         <Tab.Pane attached={false} as={Segment} style={{ height: '100vh' }}>
-          <MyRepository />
+          <MyRepositories />
         </Tab.Pane>
       )
     }
@@ -136,7 +136,7 @@ const usermain = ({ match }) => {
         <RepoTitle>
           <Link
             to={`${testdata.data.organizationalUnit.repositories[0]
-              .id}/tree/Details`}
+              .id}/Filebrowser+Details`}
           >
             {testdata.data.organizationalUnit.repositories[0].name}
           </Link>
@@ -152,9 +152,9 @@ const usermain = ({ match }) => {
     </div>
   )
 
-  const MyRepository = () => <div>{createMyRepository()}</div>
+  const MyRepositories = () => <div>{createMyRepositories()}</div>
 
-  function createMyRepository() {
+  function createMyRepositories() {
     const repo = testdata.data.organizationalUnit.repositories
     let length = repo.length
     const files = []
@@ -166,7 +166,7 @@ const usermain = ({ match }) => {
             {' '}
             <Link
               to={`${testdata.data.organizationalUnit.repositories[i]
-                .id}/tree/Details`}
+                .id}/Filebrowser+Details`}
             >
               {repo[i].name}
             </Link>
