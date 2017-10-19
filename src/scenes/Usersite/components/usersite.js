@@ -213,7 +213,13 @@ const usermain = ({ match }) => {
             textAlign: 'center'
           }}
         >
-          <h3>{testdata.data.organizationalUnit.displayName}</h3>
+          <h3>
+            {match.params.user == testdata.data.organizationalUnit.id ? (
+              testdata.data.organizationalUnit.displayName
+            ) : (
+              match.params.user
+            )}
+          </h3>
         </div>
       </div>
 
@@ -238,15 +244,4 @@ const usermain = ({ match }) => {
   )
 }
 
-{
-  /*
-
-const user = ({ match }) => (
-  <Router>
-    <Route path="/:user" component={usermain} />
-  </Router>
-)
-
-*/
-}
 export { usermain }

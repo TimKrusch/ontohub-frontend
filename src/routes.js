@@ -1,5 +1,5 @@
 import { Home, HomeHeader } from './scenes'
-import { testmain } from './scenes'
+import { workingmain } from './scenes'
 import { usermain } from './scenes'
 
 export default [
@@ -15,7 +15,7 @@ export default [
   },
   {
     path: '/:user/:repo',
-    main: testmain
+    main: workingmain
   },
 
   {

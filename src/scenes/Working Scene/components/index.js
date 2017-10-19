@@ -1,6 +1,5 @@
-export { testmain } from './testcomp'
-export { Content } from './content'
-export { Context } from './context'
+export { main as workingmain } from './main'
+
 export { Filebrowser } from './filebrowser'
 export { Details } from './content_details'
 export { Editor } from './content_editor'
