@@ -136,7 +136,7 @@ const Content = ({ match }) => {
                   name="editor"
                   as={Link}
                   to={`${match.path
-                    .replace(':Content', 'Details+Editor')
+                    .replace(':Content', 'Editor')
                     .replace(':Context', match.params.Context)}`}
                 >
                   Editor{' '}
