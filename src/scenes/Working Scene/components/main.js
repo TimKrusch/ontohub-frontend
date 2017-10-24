@@ -555,7 +555,7 @@ const Context = ({ match }) => {
   )
 }
 
-const onlyCnt = ({ match }) => {
+const onlyContent = ({ match }) => {
   return (
     <div style={{ display: 'flex' }}>
       <div
@@ -571,7 +571,7 @@ const onlyCnt = ({ match }) => {
   )
 }
 
-const withFb = ({ match }) => {
+const withFilebrowser = ({ match }) => {
   console.log(match)
   return (
     <div style={{ display: 'flex' }}>
@@ -597,7 +597,7 @@ const withFb = ({ match }) => {
     </div>
   )
 }
-const withCx = ({ match }) => {
+const withContext = ({ match }) => {
   return (
     <div style={{ display: 'flex' }}>
       <Content match={match} />
@@ -607,7 +607,7 @@ const withCx = ({ match }) => {
   )
 }
 
-const withFbCx = ({ match }) => {
+const withFilebrowserContext = ({ match }) => {
   console.log(match)
 
   return (
@@ -652,15 +652,13 @@ class menuline extends Component {
               to={
                 this.props.location.pathname
                   .replace(`${this.props.match.url}/`, '')
-                  .charAt(0) == 'F' ? (
-                  this.props.location.pathname.replace('Filebrowser+', '')
-                ) : (
-                  `${this.props.match
-                    .url}/Filebrowser+${this.props.location.pathname.replace(
-                    `${this.props.match.url}/`,
-                    ''
-                  )}`
-                )
+                  .charAt(0) == 'F'
+                  ? this.props.location.pathname.replace('Filebrowser+', '')
+                  : `${this.props.match
+                      .url}/Filebrowser+${this.props.location.pathname.replace(
+                      `${this.props.match.url}/`,
+                      ''
+                    )}`
               }
               icon="sitemap"
             />
@@ -691,69 +689,56 @@ class menuline extends Component {
                 basic
                 as={Link}
                 to={
-                  this.props.location.pathname.search('///git') ==
-                  -1 ? this.props.location.pathname.search('///prove') ==
-                  -1 ? this.props.location.pathname.search('///translation') ==
-                  -1 ? (
-                    `${this.props.location.pathname}///prove`
-                  ) : (
-                    this.props.location.pathname.replace('///translation', '')
-                  ) : (
-                    this.props.location.pathname.replace('///prove', '')
-                  ) : (
-                    this.props.location.pathname.replace('///git', '')
-                  )
+                  this.props.location.pathname.search('///git') == -1
+                    ? this.props.location.pathname.search('///prove') == -1
+                      ? this.props.location.pathname.search('///translation') ==
+                        -1
+                        ? `${this.props.location.pathname}///prove`
+                        : this.props.location.pathname.replace(
+                            '///translation',
+                            ''
+                          )
+                      : this.props.location.pathname.replace('///prove', '')
+                    : this.props.location.pathname.replace('///git', '')
                 }
               >
                 <Icon.Group>
                   <Icon
                     name={
-                      this.props.location.pathname.search('///git') ==
-                      -1 ? this.props.location.pathname.search('///prove') ==
-                      -1 ? this.props.location.pathname.search(
-                        '///translation'
-                      ) == -1 ? (
-                        'window restore'
-                      ) : (
-                        'window close outline'
-                      ) : (
-                        'window close outline'
-                      ) : (
-                        'window close outline'
-                      )
+                      this.props.location.pathname.search('///git') == -1
+                        ? this.props.location.pathname.search('///prove') == -1
+                          ? this.props.location.pathname.search(
+                              '///translation'
+                            ) == -1
+                            ? 'window restore'
+                            : 'window close outline'
+                          : 'window close outline'
+                        : 'window close outline'
                     }
                   />
                   <Icon
                     corner
                     name={
-                      this.props.location.pathname.search('///git') ==
-                      -1 ? this.props.location.pathname.search('///prove') ==
-                      -1 ? this.props.location.pathname.search(
-                        '///translation'
-                      ) == -1 ? (
-                        'plus'
-                      ) : (
-                        'null'
-                      ) : (
-                        'null'
-                      ) : (
-                        'null'
-                      )
+                      this.props.location.pathname.search('///git') == -1
+                        ? this.props.location.pathname.search('///prove') == -1
+                          ? this.props.location.pathname.search(
+                              '///translation'
+                            ) == -1
+                            ? 'plus'
+                            : 'null'
+                          : 'null'
+                        : 'null'
                     }
                   />
                 </Icon.Group>
-                {this.props.location.pathname.search('///git') ==
-                -1 ? this.props.location.pathname.search('///prove') ==
-                -1 ? this.props.location.pathname.search('///translation') ==
-                -1 ? (
-                  'add Context'
-                ) : (
-                  'close Context'
-                ) : (
-                  'close Context'
-                ) : (
-                  'close Context'
-                )}
+                {this.props.location.pathname.search('///git') == -1
+                  ? this.props.location.pathname.search('///prove') == -1
+                    ? this.props.location.pathname.search('///translation') ==
+                      -1
+                      ? 'add Context'
+                      : 'close Context'
+                    : 'close Context'
+                  : 'close Context'}
               </Button>
               <CreateFileModal />
               <CreateFolderModal />
@@ -765,19 +750,19 @@ class menuline extends Component {
         <Switch>
           <Route
             path={`${this.props.match.url}/Filebrowser+:Content///:Context`}
-            component={withFbCx}
+            component={withFilebrowserContext}
           />
           <Route
             path={`${this.props.match.url}/Filebrowser+:Content`}
-            component={withFb}
+            component={withFilebrowser}
           />
           <Route
             path={`${this.props.match.url}/:Content///:Context`}
-            component={withCx}
+            component={withContext}
           />
           <Route
             path={`${this.props.match.url}/:Content`}
-            component={onlyCnt}
+            component={onlyContent}
           />
         </Switch>
       </div>
